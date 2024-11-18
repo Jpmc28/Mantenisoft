@@ -11,16 +11,55 @@
         <img src="img/logo_on_board_2-removebg-preview.png" alt="" id="logo_personal">
         <section class="videoDeSoftware"></section>
     </div>
-    <section class="Form-Login">
-        <center>
-        <h5></h5>
-        <input class="controls" type="text" name="Usuario" value="" placeholder="Usuario">
-        <input class="controls" type="password" name="Contraseña" value="" placeholder="Contraseña">
-    
-        <p><a href="#">Olvide mi contraseña</a></p>
-        
-        <button class="buttons" name="btningresar">Ingresar</button>
-        </center>
-    </section>
+    <form action="phpbacklogeoandresgister/login1.php" method="POST">
+        <section class="Ingresar">
+            <img src="img/user.png" alt="" id="user">
+            <br>
+            <div class="alado">
+            <button type="button" id="ingresarbuton" class="active" onclick="openLogin()">Inicio</button>
+            <button type="button" onclick="openRegister()" id="registrarsebuton">Registro</button>
+            </div>
+            <br>
+            <input type="email" name="email" id="email" placeholder="Correo Institucional" required>
+            <br>
+            <input type="password" name="password" id="password" placeholder="Contraseña" required>
+            <br>
+            <button type="submit" id="ingresar">Iniciar sesión</button>
+            <br>
+            <a href="#" id="OMC">Olvide mi contraseña</a>
+        </section>
+    </form>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
