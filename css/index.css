@@ -58,6 +58,12 @@ input{
     width: 40vh;
     font-size: xx-large;
 }
+#email{
+    margin-top: 3vh;
+}
+#password{
+    margin-top: 2vh;
+}
 #email::-webkit-input-placeholder {
     text-align: center;
     color: #000000;
@@ -71,8 +77,16 @@ input{
     background-color: #339c9b;
     cursor: pointer;
     width: 40vh;
-    height: 6vh;
+    height: 7vh;
     border: none;
     border-radius: 40px;
+    margin-top: 3vh;
 }
-
+a{
+    text-decoration: wavy;
+    color: black;
+    font-size: x-large;
+}
+#OMC{
+    margin-top: 3vh;
+}
