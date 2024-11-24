@@ -9,24 +9,23 @@
 <body>
     <div id="seccion_video">
         <img src="img/logo_on_board_2-removebg-preview.png" alt="" id="logo_personal">
-        <section class="videoDeSoftware"></section>
+        <section class="videoDeSoftware">
+            <video width="1024" height="744" autoplay muted loop>
+                <source src="img/Clínica Nueva El Lago - Colaboradores NEPS (1080p, h264, youtube).mp4" type="video/mp4">
+                Tu navegador no soporta la etiqueta de video.
+            </video>
+        </section>
     </div>
     <form action="phpbacklogeoandresgister/login1.php" method="POST">
         <section class="Ingresar">
-            <img src="img/user.png" alt="" id="user">
-            <br>
-            <div class="alado">
-            <button type="button" id="ingresarbuton" class="active" onclick="openLogin()">Inicio</button>
-            <button type="button" onclick="openRegister()" id="registrarsebuton">Registro</button>
-            </div>
-            <br>
-            <input type="email" name="email" id="email" placeholder="Correo Institucional" required>
-            <br>
-            <input type="password" name="password" id="password" placeholder="Contraseña" required>
-            <br>
-            <button type="submit" id="ingresar">Iniciar sesión</button>
-            <br>
-            <a href="#" id="OMC">Olvide mi contraseña</a>
+                <img src="img/GtuzsKu2ryrS5m0Z-removebg-preview.png" alt="" id="logo_clinica">
+                <input type="email" name="email" id="email" placeholder="Correo Institucional" required>
+                <br>
+                <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                <br>
+                <a href="#" id="OMC">Olvide mi contraseña</a>
+                <br>
+                <button type="submit" id="ingresar">Ingresar</button>
         </section>
     </form>
 </body>
