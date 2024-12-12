@@ -1,0 +1,7 @@
+html, body {
+    overflow: hidden; 
+    height: 100vh; 
+    margin: 0; 
+    background: url("img/Olvide\ mi\ contraseña\ \(1\).png");
+    display: flex;
+}
