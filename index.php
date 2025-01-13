@@ -24,7 +24,7 @@
                 <br>
                 <input type="password" name="password" id="password" placeholder="Contraseña" required>
                 <br>
-                <button type="submit" id="ingresar"><a href="ingresousuarioadmin/inicioadmin.html">Ingresar</a></button>
+                <button type="submit" id="ingresar">Ingresar</button>
                 <br>
                 <a href="#" id="OMC">Olvide mi contraseña</a>
                 <br>

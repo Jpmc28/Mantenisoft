@@ -4,4 +4,36 @@ html, body {
     margin: 0; 
     background: url("img/Olvide\ mi\ contraseña\ \(1\).png");
     display: flex;
+    font-weight: bold;
+    font-style: unset;
+}
+#tablaPeronal{
+    background: #d9d9d9;
+    height: 50vh;
+    width: 40vh;
+    margin-top: 12vh;
+    margin-left: 25vh;
+    border-radius: 50px;
+    font-size: x-large;
+    padding: 3vh;
+    align-items: center;
+    align-content: center;
+    font-weight: 700;
+    text-align: center;
+}
+#boton_actualizar{
+    height: 6vh;
+    width: 20vh;
+    border-radius: 50px;
+    margin-top: 2vh;
+    cursor: pointer;
+    font-size: x-large;
+    border: none;
+    background-color: #339c9b;
+}
+#boton_actualizar, a{
+    text-decoration: none;
+    color: #ffffff;         
+    outline: none; 
+    font-weight: 700;
 }
