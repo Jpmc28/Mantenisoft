@@ -3,10 +3,13 @@ html, body {
     height: 100vh; 
     margin: 0; 
     background: url("img/Olvide\ mi\ contraseña\ \(1\).png");
-    display: flex;
+    display: flex-end;
     font-weight: bold;
     font-style: unset;
 }
+#personalydatots{
+    display: flex;
+    }    
 #tablaPeronal{
     background: #d9d9d9;
     height: 50vh;
@@ -36,4 +39,60 @@ html, body {
     color: #ffffff;         
     outline: none; 
     font-weight: 700;
+}
+#tablaServicios{
+    background-color: #d9d9d9;
+    margin-left: 10vh;
+    margin-top: 12vh;
+    border-radius: 50px;
+    width: 90vh;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+#servicios{
+    margin-top: 3vh;
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 50px;
+    width: 50vh;
+    height: 7vh;
+    font-size: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#seccion_dinamica{
+    display: flex; 
+    justify-content: flex-end; 
+    background-color: #ffffff;
+    border-radius: 50px;
+}
+#serviciosRealizados {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #e0f7fa;
+    border-radius: 10px;
+}
+
+.service-item {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #339c9b;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.service-item span {
+    font-weight: bold;
+}
+
+.service-item p {
+    margin: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

@@ -17,20 +17,23 @@ if (!isset($_SESSION['IdCedula'])) {
     <title>InicioAdmin</title>
 </head>
 <body>
-    <section id="tablaPeronal">
-        <img src="img/informacionbasica.png" alt="">
-        <h3>Nombre: <?php echo htmlspecialchars($_SESSION['Name']); ?></h3>
-        <h3>CC:  <?php echo htmlspecialchars($_SESSION['IdCedula']); ?></h3>
-        <h3>Cargo: <?php echo htmlspecialchars($_SESSION['Rol']); ?></h3>
-        <h3>Correo:  <?php echo htmlspecialchars($_SESSION['InstitucionalEmail']); ?></h3>
-        <button id="boton_actualizar"><a href="#">Actualizar</a></button>
-    </section>
-    <section id="tablaServicios">
-        <section id="servicios"><H2>Servicios Realizados</H2></section>
-        <section id="serviciosRealizados">
-            
+    <section id="personalydatots">
+        <section id="tablaPeronal">
+            <img src="img/informacionbasica.png" alt="">
+            <h3>Nombre: <?php echo htmlspecialchars($_SESSION['Name']); ?></h3>
+            <h3>CC:  <?php echo htmlspecialchars($_SESSION['IdCedula']); ?></h3>
+            <h3>Cargo: <?php echo htmlspecialchars($_SESSION['Rol']); ?></h3>
+            <h3>Correo:  <?php echo htmlspecialchars($_SESSION['InstitucionalEmail']); ?></h3>
+            <button id="boton_actualizar"><a href="#">Actualizar</a></button>
+        </section>
+        <section id="tablaServicios">
+            <section id="servicios"><p>Servicios Realizados</p></section>
+            <section id="serviciosRealizados"></section>
         </section>
     </section>
-    <button><a href=""></a></button>
+    <section id="seccion_dinamica">
+    <button id="boton_dinamico"><a href=""></a></button>
+    </section>
+    <script src="js/fetchServicios.js"></script>
 </body>
 </html>
