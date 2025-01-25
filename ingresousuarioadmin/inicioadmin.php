@@ -3,7 +3,7 @@ session_start();
 
 // Verificar si el usuario está autenticado
 if (!isset($_SESSION['IdCedula'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>
@@ -28,12 +28,20 @@ if (!isset($_SESSION['IdCedula'])) {
         </section>
         <section id="tablaServicios">
             <section id="servicios"><p>Servicios Realizados</p></section>
-            <section id="serviciosRealizados"></section>
+            <section id="serviciosRealizados">
+            </section>
         </section>
     </section>
-    <section id="seccion_dinamica">
-    <button id="boton_dinamico"><a href=""></a></button>
-    </section>
-    <script src="js/fetchServicios.js"></script>
+    <div class="menu-container">
+    <div class="menu-icon">
+      <img src="img/imagen_principal-removebg-preview.png" alt="Menú">
+    </div>
+    <div class="dropdown-menu">
+      <img src="img/telefono-removebg-preview.png" alt="Servicio 1" title="Servicio 1">
+      <img src="img/impresora-removebg-preview.png" alt="Servicio 2" title="Servicio 2">
+      <img src="img/computadores-removebg-preview.png" alt="Servicio 3" title="Servicio 3">
+      <img src="img/telefono1-removebg-preview.png" alt="Servicio 4" title="Servicio 4">
+    </div>
+  </div>
 </body>
 </html>

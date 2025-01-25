@@ -40,59 +40,102 @@ html, body {
     outline: none; 
     font-weight: 700;
 }
-#tablaServicios{
+#tablaServicios {
     background-color: #d9d9d9;
     margin-left: 10vh;
     margin-top: 12vh;
     border-radius: 50px;
     width: 90vh;
-    display: flex;
-    align-content: center;
-    justify-content: center;
+    height: auto; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 2vh; 
 }
-#servicios{
+#servicios {
     margin-top: 3vh;
-    display: flex;
     background-color: #ffffff;
     border-radius: 50px;
     width: 50vh;
     height: 7vh;
     font-size: 5vh;
     display: flex;
+    align-items: center; 
+    justify-content: center; 
+}
+#serviciosRealizados {
+    background-color: white;
+    height: 30vh;
+    width: 90vh;
+    margin-top: 3vh;
+    padding-top: 9vh;
+    border-radius: 25px;
+    display: flex; 
     align-items: center;
     justify-content: center;
 }
-#seccion_dinamica{
-    display: flex; 
-    justify-content: flex-end; 
-    background-color: #ffffff;
-    border-radius: 50px;
-}
-#serviciosRealizados {
-    padding: 10px;
-    border: 1px solid #ddd;
-    background-color: #e0f7fa;
-    border-radius: 10px;
-}
 
-.service-item {
-    padding: 10px;
-    margin-bottom: 5px;
-    background-color: #339c9b;
-    color: white;
-    border-radius: 5px;
+
+.menu-container {
+    margin-top: 5vh;
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-}
+  }
+  .menu-icon {
+    width: 10vh;
+    height: 10vh;
+    background-color: #339c9b;
+    border-radius: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  .menu-icon img {
+    width: 10vh;
+    height: 10vh;
+  }
 
-.service-item span {
-    font-weight: bold;
-}
-
-.service-item p {
-    margin: 0;
+  /* Menú desplegable */
+  .dropdown-menu {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    background-color: #339c9b;
+    border-radius: 35px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
-}
+    width: 60vh;
+    height: 10vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1.0s ease-in-out; 
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .dropdown-menu img {
+    margin: 2vh;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 35px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .menu-container:hover .menu-icon {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .menu-container:hover .dropdown-menu {
+    width: 60vh; 
+    opacity: 1;
+    visibility: visible;
+  }
