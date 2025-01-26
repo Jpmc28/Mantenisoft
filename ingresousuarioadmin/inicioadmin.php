@@ -37,10 +37,10 @@ if (!isset($_SESSION['IdCedula'])) {
       <img src="img/imagen_principal-removebg-preview.png" alt="Menú">
     </div>
     <div class="dropdown-menu">
-      <img src="img/telefono-removebg-preview.png" alt="Servicio 1" title="Servicio 1">
-      <img src="img/impresora-removebg-preview.png" alt="Servicio 2" title="Servicio 2">
-      <img src="img/computadores-removebg-preview.png" alt="Servicio 3" title="Servicio 3">
-      <img src="img/telefono1-removebg-preview.png" alt="Servicio 4" title="Servicio 4">
+      <a href="menus/telefono.php"><img src="img/telefono-removebg-preview.png" alt="Servicio 1" title="Servicio 1"></a>
+      <a href="menus/printer.php"><img src="img/impresora-removebg-preview.png" alt="Servicio 2" title="Servicio 2"></a>
+      <a href="menus/computers.php"><img src="img/computadores-removebg-preview.png" alt="Servicio 3" title="Servicio 3"></a>
+      <a href="menus/timbre.php"><img src="img/telefono1-removebg-preview.png" alt="Servicio 4" title="Servicio 4"></a>
     </div>
   </div>
 </body>
