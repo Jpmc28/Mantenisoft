@@ -23,18 +23,17 @@ if (!isset($_SESSION['IdCedula'])) {
         <img src="img/logo_clinica-removebg-preview.png" alt="logoCA">
         </div>
         <form action="../phpbacklogeoandresgister/actualizardatos.php" method="POST" class="form-container">
-        <input class="registrar" name="nombre" type="text"  placeholder="Nombre" required>
-        <input class="registrar" name="numero" type="text"  placeholder="Teléfono" required>
-        <input class="registrar" name="Cedula" type="text"  placeholder="Cedula" required>
-        <input type="email" name="email" class="registrar" placeholder="Correo" required>
-        </form>
+        <input class="registrar" name="nombre" type="text"  placeholder="Nombre" value="<?php echo htmlspecialchars($_SESSION['Nombre']); ?>" required>
+        <input class="registrar" name="cargo" type="text"  placeholder="cargo" value="<?php echo htmlspecialchars($_SESSION['Rol']); ?>" required>
+        <input type="email" name="email" class="registrar" placeholder="Correo" value="<?php echo htmlspecialchars($_SESSION['InstitucionalEmail']); ?>" required>
+        <input class="registrar" name="cedula" type="text"  placeholder="Cedula" value="<?php echo htmlspecialchars($_SESSION['IdCedula']); ?>" required>  
         </div>
         <div id="imgfuera">
             <img src="img/logosof-removebg-preview.png" alt="">
         </div>
     </div>
     <div id="botones">
-    <button type="submit" id="guardar"><h3>Guardar</h3></button>
+    <button type="submit" id="guardar"><h3>Guardar</h3></button></form>
     <a href="inicioadmin.php">
     <button id="cancelar"><h3>cancelar</h3></button>
     </a>

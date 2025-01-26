@@ -20,7 +20,7 @@ if (!isset($_SESSION['IdCedula'])) {
     <section id="personalydatots">
         <section id="tablaPeronal">
             <img src="img/informacionbasica.png" alt="">
-            <h3>Nombre: <?php echo htmlspecialchars($_SESSION['Name']); ?></h3>
+            <h3>Nombre: <?php echo htmlspecialchars($_SESSION['Nombre']); ?></h3>
             <h3>CC:  <?php echo htmlspecialchars($_SESSION['IdCedula']); ?></h3>
             <h3>Cargo: <?php echo htmlspecialchars($_SESSION['Rol']); ?></h3>
             <h3>Correo:  <?php echo htmlspecialchars($_SESSION['InstitucionalEmail']); ?></h3>

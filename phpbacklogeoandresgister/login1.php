@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
-        $_SESSION['Name'] = $user['Name'];
+        $_SESSION['Nombre'] = $user['Nombre'];
         $_SESSION['IdCedula'] = $user['IdCedula'];
         $_SESSION['Rol'] = $user['Rol'];
         $_SESSION['InstitucionalEmail'] = $user['InstitucionalEmail'];

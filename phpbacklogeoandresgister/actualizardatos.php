@@ -16,19 +16,20 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
     $nombre = $_POST['nombre'];
-    $numero = $_POST['numero'];
-    $direccion = $_POST['direccion'];
+    $cargo = $_POST['cargo'];
+    $email = $_POST['email'];
+    $cedula = $_POST['cedula'];
 
-    $sql = "UPDATE EstudiantesKonradLorenz SET Nombres = ?, Telefono = ?, Direccion = ? WHERE CorreoInstitucional = ?";
+    $sql = "UPDATE administratoruser SET Nombre = ?, Rol = ?, InstitucionalEmail = ? WHERE IdCedula = ?";
     $stmt = $conn->prepare($sql);
     
     if ($stmt) {
-        $stmt->bind_param("ssss", $nombre, $numero, $direccion, $email);
+        $stmt->bind_param("ssss", $nombre, $cargo, $email, $cedula);
         
         if ($stmt->execute()) {
-            echo "Datos actualizados exitosamente.";
+            header("Location: ../index.php"); 
+            exit();
         } else {
             echo "Error al actualizar los datos: " . $stmt->error;
         }
