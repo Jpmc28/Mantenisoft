@@ -11,7 +11,7 @@
     <div id="seccion_video">
         <img src="img/logo_on_board_2-removebg-preview.png" alt="" id="logo_personal">
         <section class="videoDeSoftware">
-            <video width="1024" height="744" autoplay muted loop>
+            <video autoplay muted loop>
                 <source src="img/Clínica Nueva El Lago - Colaboradores NEPS (1080p, h264, youtube).mp4" type="video/mp4">
                 Tu navegador no soporta la etiqueta de video.
             </video>

@@ -35,6 +35,8 @@ html, body {
 video {
     pointer-events: none;
     border-radius: 40px; 
+    width: 1024px;
+    height: 744px;
 }
 #logo_clinica{
     width: 30vh;
@@ -90,3 +92,9 @@ a{
 #OMC{
     margin-top: 3vh;
 }
+@media (max-width: 1920px) {
+    video{
+        width: 512px;
+        height: 372px;        
+    }
+  }
