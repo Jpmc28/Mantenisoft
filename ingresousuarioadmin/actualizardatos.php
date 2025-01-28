@@ -3,7 +3,7 @@ session_start();
 
 // Verificar si el usuario está autenticado
 if (!isset($_SESSION['IdCedula'])) {
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 ?>
@@ -20,7 +20,7 @@ if (!isset($_SESSION['IdCedula'])) {
     <div id="seccion_actualizar_datos">
         <div id="logoyactualizar">
         <div id="logo">
-        <img src="img/logo_clinica-removebg-preview.png" alt="logoCA">
+        <img src="img/logo_clinica-removebg-preview.png" alt="logoCA" id="logoCA">
         </div>
         <form action="../phpbacklogeoandresgister/actualizardatos.php" method="POST" class="form-container">
         <input class="registrar" name="nombre" type="text"  placeholder="Nombre" value="<?php echo htmlspecialchars($_SESSION['Nombre']); ?>" required>
@@ -29,7 +29,7 @@ if (!isset($_SESSION['IdCedula'])) {
         <input class="registrar" name="cedula" type="text"  placeholder="Cedula" value="<?php echo htmlspecialchars($_SESSION['IdCedula']); ?>" required>  
         </div>
         <div id="imgfuera">
-            <img src="img/logosof-removebg-preview.png" alt="">
+            <img src="img/logosof-removebg-preview.png" alt="" id="logosof">
         </div>
     </div>
     <div id="botones">

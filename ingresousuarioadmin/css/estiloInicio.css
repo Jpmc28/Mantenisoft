@@ -17,7 +17,7 @@ html, body {
     margin-top: 12vh;
     margin-left: 25vh;
     border-radius: 50px;
-    font-size: x-large;
+    font-size: 2vh;
     padding: 3vh;
     align-items: center;
     align-content: center;
@@ -30,9 +30,28 @@ html, body {
     border-radius: 50px;
     margin-top: 2vh;
     cursor: pointer;
-    font-size: x-large;
+    font-size: 2vh;
     border: none;
     background-color: #339c9b;
+}
+#cabeza{
+  width: 15vh;
+}
+#foto1{
+  width: 10vh;
+  height: 10vh;
+}
+#foto2{
+  width: 10vh;
+  height: 10vh;
+}
+#foto3{
+  width: 11vh;
+  height: 9vh;
+}
+#foto4{
+  width: 10vh;
+  height: 10vh;
 }
 #boton_actualizar, a{
     text-decoration: none;
@@ -88,7 +107,7 @@ html, body {
     width: 10vh;
     height: 10vh;
     background-color: #339c9b;
-    border-radius: 35px;
+    border-radius: 2vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,7 +126,7 @@ html, body {
     gap: 10px;
     padding: 10px 0;
     background-color: #339c9b;
-    border-radius: 35px;
+    border-radius: 2vh;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     white-space: nowrap;
@@ -125,7 +144,7 @@ html, body {
     margin: 2vh;
     width: 10vh;
     height: 10vh;
-    border-radius: 35px;
+    border-radius: 2vh;
     cursor: pointer;
     flex-shrink: 0;
   }

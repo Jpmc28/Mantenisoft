@@ -3,7 +3,7 @@ session_start();
 
 // Verificar si el usuario está autenticado
 if (!isset($_SESSION['IdCedula'])) {
-    header("Location: index.php");
+    header("Location: ../../index.php");
     exit();
 }
 ?>
@@ -42,6 +42,6 @@ if (!isset($_SESSION['IdCedula'])) {
             </div>
         </div>
     </div>
-    <a href="../inicioadmin.php"><img src="img/home-removebg-preview.png" alt=""></a>
+    <a href="../inicioadmin.php"><img src="img/home-removebg-preview.png" alt="" id="imgicon"></a>
 </body>
 </html>
