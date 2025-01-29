@@ -58,7 +58,7 @@ input{
     border: none;
     height: 6vh;
     width: 40vh;
-    font-size: xx-large;
+    font-size: 3vh;
 }
 #email{
     margin-top: 3vh;
@@ -75,7 +75,7 @@ input{
     color: #000000;
 }
 #ingresar{
-    font-size: xx-large;
+    font-size: 3vh;
     background-color: #339c9b;
     cursor: pointer;
     width: 40vh;
@@ -87,7 +87,7 @@ input{
 a{
     text-decoration: wavy;
     color: black;
-    font-size: x-large;
+    font-size: 3vh;
 }
 #OMC{
     margin-top: 3vh;
