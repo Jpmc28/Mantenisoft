@@ -17,6 +17,7 @@ if (!isset($_SESSION['IdCedula'])) {
     <title>InicioAdmin</title>
 </head>
 <body>
+  <img src="img/GtuzsKu2ryrS5m0Z-removebg-preview.png" alt="" id="logocli">
     <section id="personalydatots">
         <section id="tablaPeronal">
             <img src="img/informacionbasica.png" alt="" id="cabeza">

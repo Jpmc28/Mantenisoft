@@ -11,10 +11,10 @@ html, body {
     display: flex;
     }    
 #tablaPeronal{
-    background: #d9d9d9;
+    background: #1c4a60;
     height: 50vh;
     width: 40vh;
-    margin-top: 12vh;
+    margin-top: 5vh;
     margin-left: 25vh;
     border-radius: 50px;
     font-size: 2vh;
@@ -24,15 +24,18 @@ html, body {
     font-weight: 700;
     text-align: center;
 }
+h3{
+  color: white;
+}
 #boton_actualizar{
     height: 6vh;
     width: 20vh;
     border-radius: 50px;
     margin-top: 2vh;
     cursor: pointer;
-    font-size: 2vh;
+    font-size: 2.5vh;
     border: none;
-    background-color: #339c9b;
+    background-color: #fbfefe;
 }
 #cabeza{
   width: 15vh;
@@ -55,14 +58,14 @@ html, body {
 }
 #boton_actualizar, a{
     text-decoration: none;
-    color: #ffffff;         
+    color: black;         
     outline: none; 
     font-weight: 700;
 }
 #tablaServicios {
-    background-color: #d9d9d9;
+    background-color:  #1c4a60;
     margin-left: 10vh;
-    margin-top: 12vh;
+    margin-top: 5vh;
     border-radius: 50px;
     width: 90vh;
     height: auto; 
@@ -74,7 +77,7 @@ html, body {
 }
 #servicios {
     margin-top: 3vh;
-    background-color: #ffffff;
+    background-color: #fbfefe;
     border-radius: 50px;
     width: 50vh;
     height: 7vh;
@@ -84,7 +87,7 @@ html, body {
     justify-content: center; 
 }
 #serviciosRealizados {
-    background-color: white;
+    background-color: #1c4a60;
     height: 30vh;
     width: 90vh;
     margin-top: 3vh;
@@ -94,7 +97,10 @@ html, body {
     align-items: center;
     justify-content: center;
 }
-
+#logocli{
+  width: 20vh;
+  margin-left: 2vh;
+}
 
 .menu-container {
     margin-top: 5vh;
@@ -106,8 +112,9 @@ html, body {
   .menu-icon {
     width: 10vh;
     height: 10vh;
-    background-color: #339c9b;
+    background-color: #9d9d9e;
     border-radius: 2vh;
+    border: 0.3vh solid #1c4a60;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,7 +132,8 @@ html, body {
     display: flex;
     gap: 10px;
     padding: 10px 0;
-    background-color: #339c9b;
+    background-color: #9d9d9e;
+    border: 0.3vh solid #1c4a60;
     border-radius: 2vh;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
     overflow: hidden;
