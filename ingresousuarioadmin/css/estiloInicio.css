@@ -2,7 +2,7 @@ html, body {
     overflow: hidden; 
     height: 100vh; 
     margin: 0; 
-    background: url("img/Olvide\ mi\ contraseña\ \(1\).png");
+    background: url("img/Olvide mi contraseña (1).png");
     display: flex-end;
     font-weight: bold;
     font-style: unset;
@@ -98,7 +98,7 @@ h3{
     justify-content: center;
 }
 #logocli{
-  width: 20vh;
+  width: 30vh;
   margin-left: 2vh;
 }
 
