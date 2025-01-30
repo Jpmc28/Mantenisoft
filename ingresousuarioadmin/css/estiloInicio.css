@@ -3,6 +3,9 @@ html, body {
     height: 100vh; 
     margin: 0; 
     background: url("img/Olvide mi contraseña (1).png");
+    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
     display: flex-end;
     font-weight: bold;
     font-style: unset;
@@ -43,18 +46,34 @@ h3{
 #foto1{
   width: 10vh;
   height: 10vh;
+  transition: 0.3s ease-in-out;
+}
+#foto1:hover{
+  transform: translateY(-10px);
 }
 #foto2{
   width: 10vh;
   height: 10vh;
+  transition: 0.3s ease-in-out;
+}
+#foto2:hover{
+  transform: translateY(-10px);
 }
 #foto3{
   width: 11vh;
   height: 9vh;
+  transition: 0.3s ease-in-out;
+}
+#foto3:hover{
+  transform: translateY(-10px);
 }
 #foto4{
   width: 10vh;
   height: 10vh;
+  transition: 0.3s ease-in-out;
+}
+#foto4:hover{
+  transform: translateY(-10px);
 }
 #boton_actualizar, a{
     text-decoration: none;
@@ -124,6 +143,10 @@ h3{
   .menu-icon img {
     width: 10vh;
     height: 10vh;
+    transition: 0.3s ease-in-out;
+  }
+  .menu-icon img:hover{
+    transform: translateY(-10px);
   }
 
   /* Menú desplegable */
@@ -165,4 +188,12 @@ h3{
     width: 60vh; 
     opacity: 1;
     visibility: visible;
+  }
+  @media (max-width: 1920px) {
+    html, body {
+        background: url("img/Olvide\ mi\ contraseña\ \(2\).png");
+        background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+    }
   }

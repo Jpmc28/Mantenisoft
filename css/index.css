@@ -13,13 +13,14 @@ html, body {
     flex-direction: column;
     align-items: center; 
     justify-content: center; 
-    background-color: #d9d9d9;
+    background-color: #43778d;
     width: 95vh;
     height: 65vh;
     border-radius: 36px;
     margin-top: 20vh;
     margin-bottom: 20vh;
     margin-left: 15vh;
+    border: 0.3vh solid #d9d9d9;
 }
 .videoDeSoftware{
     margin-top: 1%;
@@ -50,10 +51,11 @@ video {
     border-radius: 36px;
     margin-top: 20vh;
     margin-left: 10vh;
-    background-color: #d9d9d9;
+    background-color:  #43778d;
+    border: 0.3vh solid #d9d9d9;
 }
 input{
-    background-color: #a0a0b4;
+    background-color: #fbfefe;
     border-radius: 40px;
     border: none;
     height: 6vh;
@@ -97,4 +99,10 @@ a{
         width: 512px;
         height: 372px;        
     }
-  }
+    html, body {
+        background: url("img/Olvide\ mi\ contraseña\ \(2\).png");
+        background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+    }
+}
