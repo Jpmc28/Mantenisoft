@@ -17,6 +17,7 @@ if (!isset($_SESSION['IdCedula'])) {
     <title>mantenisoft</title>
 </head>
 <body>
+    <img src="img/GtuzsKu2ryrS5m0Z-removebg-preview.png" alt="" id="logocli">
     <div id="elementosdesglozados">
         <div id="texto"><h1>Elige el piso donde deseas buscar información</h1></div>
         <div id="separador">

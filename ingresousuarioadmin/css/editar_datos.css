@@ -1,24 +1,26 @@
 html, body {
-    overflow: hidden;
-    height: 100vh;
-    margin: 0;
-    background: url("img/Olvide\ mi\ contraseña\ \(1\).png");
+    overflow: hidden; 
+    height: 100vh; 
+    margin: 0; 
+    background: url("img/Olvide mi contraseña (1).png");
     background-size: cover; /* Hace que la imagen cubra toda la pantalla */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
+    display: flex-end;
     font-weight: bold;
     font-style: unset;
-    display: flex;
-    flex-direction: column;
     align-items: center;
+    align-content: center;
     justify-content: center;
+    text-align: center;
 }
 #seccion_actualizar_datos{
     background: #1c4a60;
     height: 60vh;
     width: 100vh;
     border-radius: 5vh;
-    display: flex
+    margin-left: 40vh;
+    display: flex;
 }
 #logo{
     background: #d9d9d9;
@@ -66,6 +68,7 @@ html, body {
 }
 #botones{
     display: flex;
+    margin-left: 70vh;
 }
 #guardar{
     cursor: pointer;

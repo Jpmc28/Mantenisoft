@@ -43,5 +43,6 @@ if (!isset($_SESSION['IdCedula'])) {
         </div>
         <a href="../inicioadmin.php"><img src="img/home-removebg-preview.png" alt="" id="imgicon"></a>
     </div>
+    <img src="img/GtuzsKu2ryrS5m0Z-removebg-preview.png" alt="" id="logocli">
 </body>
 </html>

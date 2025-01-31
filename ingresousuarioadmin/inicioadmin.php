@@ -25,7 +25,7 @@ if (!isset($_SESSION['IdCedula'])) {
             <h3>CC:  <?php echo htmlspecialchars($_SESSION['IdCedula']); ?></h3>
             <h3>Cargo: <?php echo htmlspecialchars($_SESSION['Rol']); ?></h3>
             <h3>Correo:  <?php echo htmlspecialchars($_SESSION['InstitucionalEmail']); ?></h3>
-            <button id="boton_actualizar"><a href="actualizardatos.php">Actualizar</a></button>
+            <a href="actualizardatos.php"><button id="boton_actualizar">Actualizar</button></a>
         </section>
         <section id="tablaServicios">
             <section id="servicios"><p>Servicios Realizados</p></section>
