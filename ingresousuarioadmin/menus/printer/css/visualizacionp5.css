@@ -1,0 +1,23 @@
+html, body {
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+    background: url("img/Olvide\ mi\ contraseña\ \(1\).png");
+    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    font-weight: bold;
+    font-style: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width: 1920px) {
+    html, body {
+        background: url("img/Olvide\ mi\ contraseña\ \(2\).png");
+        background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+    }
+  }

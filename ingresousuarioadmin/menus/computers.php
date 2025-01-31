@@ -21,27 +21,27 @@ if (!isset($_SESSION['IdCedula'])) {
         <div id="texto"><h1>Elige el piso donde deseas buscar información</h1></div>
         <div id="separador">
             <div>
-                <div class="piso" data-floor="S2"><a href=""><h1>S2</h1></a></div>
-                <div class="piso" data-floor="3"><a href=""><h1>Piso 3</h1></a></div>
-                <div class="piso" data-floor="7"><a href=""><h1>Piso 7</h1></a></div>
+                <a href="computers/visualizacionsotano2.php"><div class="piso" data-floor="S2"><h1>S2</h1></div></a>
+                <a href="computers/visualizacionpiso235.php"><div class="piso" data-floor="3"><h1>Piso 3</h1></div></a>
+                <a href="computers/visualizacionpiso6789.php"><div class="piso" data-floor="7"><h1>Piso 7</h1></div></a>
             </div>
             <div>
-                <div class="piso" data-floor="S1"><a href=""><h1>S1</h1></a></div>
-                <div class="piso" data-floor="4"><a href=""><h1>Piso 4</h1></a></div>
-                <div class="piso" data-floor="8"><a href=""><h1>Piso 8</h1></a></div>
+                <a href="computers/visualizacionsotano1.php"><div class="piso" data-floor="S1"><h1>S1</h1></div></a>
+                <a href="computers/visualizacionpiso4.php"><div class="piso" data-floor="4"><h1>Piso 4</h1></div></a>
+                <a href="computers/visualizacionpiso6789.php"><div class="piso" data-floor="8"><h1>Piso 8</h1></div></a>
             </div>
             <div>
-                <div class="piso" data-floor="1"><a href=""><h1>Piso 1</h1></a></div>
-                <div class="piso" data-floor="5"><a href=""><h1>Piso 5</h1></a></div>
-                <div class="piso" data-floor="9"><a href=""><h1>Piso 9</h1></a></div>
+                <a href="computers/visualizacionpiso1.php"><div class="piso" data-floor="1"><h1>Piso 1</h1></div></a>
+                <a href="computers/visualizacionpiso235.php"><div class="piso" data-floor="5"><h1>Piso 5</h1></div></a>
+                <a href="computers/visualizacionpiso6789.php"><div class="piso" data-floor="9"><h1>Piso 9</h1></div></a>
             </div>
             <div>
-                <div class="piso" data-floor="2"><a href=""><h1>Piso 2</h1></a></div>
-                <div class="piso" data-floor="6"><a href=""><h1>Piso 6</h1></a></div>
-                <div class="piso" data-floor="10"><a href=""><h1>Piso 10</h1></a</div>
+                <a href="computers/visualizacionpiso235.php"><div class="piso" data-floor="2"><h1>Piso 2</h1></div></a>
+                <a href="computers/visualizacionpiso6789.php"><div class="piso" data-floor="6"><h1>Piso 6</h1></div></a>
+                <a href="computers/visualizacionpiso10.php"><div class="piso" data-floor="10"><h1>Piso 10</h1></div></a>
             </div>
         </div>
+        <a href="../inicioadmin.php"><img src="img/home-removebg-preview.png" alt="" id="imgicon"></a>
     </div>
-    <a href="../inicioadmin.php"><img src="img/home-removebg-preview.png" alt="" id="imgicon"></a>
 </body>
 </html>
