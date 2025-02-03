@@ -1,12 +1,11 @@
 <?php
 session_start();
-
-// Verificar si el usuario está autenticado
-if (!isset($_SESSION['IdCedula'])) {
+if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'admin') {
     header("Location: ../index.php");
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +22,10 @@ if (!isset($_SESSION['IdCedula'])) {
         <img src="img/logo_clinica-removebg-preview.png" alt="logoCA" id="logoCA">
         </div>
         <form action="../phpbacklogeoandresgister/actualizardatos.php" method="POST" class="form-container">
-        <input class="registrar" name="nombre" type="text"  placeholder="Nombre" value="<?php echo htmlspecialchars($_SESSION['Nombre']); ?>" required>
+        <input class="registrar" name="nombre" type="text"  placeholder="Nombre" value="<?php echo htmlspecialchars($_SESSION['nombre']); ?>" required>
         <input class="registrar" name="cargo" type="text"  placeholder="cargo" value="<?php echo htmlspecialchars($_SESSION['Rol']); ?>" required>
-        <input type="email" name="email" class="registrar" placeholder="Correo" value="<?php echo htmlspecialchars($_SESSION['InstitucionalEmail']); ?>" required>
-        <input class="registrar" name="cedula" type="text"  placeholder="Cedula" value="<?php echo htmlspecialchars($_SESSION['IdCedula']); ?>" required>  
+        <input type="email" name="email" class="registrar" placeholder="Correo" value="<?php echo htmlspecialchars($_SESSION['correo']); ?>" required>
+        <input class="registrar" name="cedula" type="text"  placeholder="Cedula" value="<?php echo htmlspecialchars($_SESSION['Cedula']); ?>" required>  
         </div>
         <div id="imgfuera">
             <img src="img/logosof-removebg-preview.png" alt="" id="logosof">

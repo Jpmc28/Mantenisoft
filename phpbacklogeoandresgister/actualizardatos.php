@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $cedula = $_POST['cedula'];
 
-    $sql = "UPDATE administratoruser SET Nombre = ?, Rol = ?, InstitucionalEmail = ? WHERE IdCedula = ?";
+    $sql = "UPDATE usuarios SET nombre = ?, Rol = ?, correo = ?, Cedula = ? WHERE id_usuario = ?";
     $stmt = $conn->prepare($sql);
     
     if ($stmt) {

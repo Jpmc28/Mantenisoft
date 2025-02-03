@@ -1,12 +1,11 @@
 <?php
 session_start();
-
-// Verificar si el usuario está autenticado
-if (!isset($_SESSION['IdCedula'])) {
+if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'admin') {
     header("Location: ../index.php");
     exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,10 +20,10 @@ if (!isset($_SESSION['IdCedula'])) {
     <section id="personalydatots">
         <section id="tablaPeronal">
             <img src="img/informacionbasica.png" alt="" id="cabeza">
-            <h3>Nombre: <?php echo htmlspecialchars($_SESSION['Nombre']); ?></h3>
-            <h3>CC:  <?php echo htmlspecialchars($_SESSION['IdCedula']); ?></h3>
+            <h3>Nombre: <?php echo htmlspecialchars($_SESSION['nombre']); ?></h3>
+            <h3>CC:  <?php echo htmlspecialchars($_SESSION['Cedula']); ?></h3>
             <h3>Cargo: <?php echo htmlspecialchars($_SESSION['Rol']); ?></h3>
-            <h3>Correo:  <?php echo htmlspecialchars($_SESSION['InstitucionalEmail']); ?></h3>
+            <h3>Correo:  <?php echo htmlspecialchars($_SESSION['correo']); ?></h3>
             <a href="actualizardatos.php"><button id="boton_actualizar">Actualizar</button></a>
         </section>
         <section id="tablaServicios">
