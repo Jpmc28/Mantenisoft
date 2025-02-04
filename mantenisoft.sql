@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-02-2025 a las 05:35:36
+-- Tiempo de generación: 04-02-2025 a las 21:58:49
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,7 +35,8 @@ CREATE TABLE `activos` (
   `id_area` int(11) NOT NULL,
   `imagen` longblob DEFAULT NULL,
   `fecha_ingreso` datetime DEFAULT current_timestamp(),
-  `id_usuario` int(11) NOT NULL
+  `id_usuario` int(11) NOT NULL,
+  `NPlaca` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -49,6 +50,41 @@ CREATE TABLE `areas` (
   `nombre_area` varchar(100) NOT NULL,
   `id_piso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `areas`
+--
+
+INSERT INTO `areas` (`id_area`, `nombre_area`, `id_piso`) VALUES
+(1002, 'IDIME', 1002),
+(10010, 'FARMACIA PRINCIPAL', 1001),
+(10011, 'ALMACEN', 1001),
+(10012, 'NUTRICION', 1001),
+(10013, 'MANTENIMIENTO', 1001),
+(10014, 'BIOMEDICOS', 1001),
+(10100, 'URGENCIAS', 1010),
+(10101, 'CONSULTA EXTERNA', 1010),
+(10102, 'ADMISION URGENCIAS', 1010),
+(10103, 'RECEPCION', 1010),
+(10104, 'MONITOREO', 1010),
+(10200, 'OBSERVACION URGENCIAS', 1020),
+(10201, 'PROGRAMACION DE CIRUGIA', 1020),
+(10202, 'ARCHIVO', 1020),
+(10203, 'RECEPCION', 1020),
+(10300, 'UNIDAD DE CUIDADOS INTENCIVOS INTERMEDI0S', 1030),
+(10301, 'RECEPCION', 1030),
+(10400, 'SALAS DE CIRUGIA', 1040),
+(10500, 'UCI', 1050),
+(10501, 'RECEPCION', 1050),
+(10600, 'HOSPITALIZACION', 1060),
+(10601, 'CONSULTA EXTERNA', 1060),
+(10700, 'HOSPITALIZACION', 1070),
+(10701, 'CONSULTA EXTERNA', 1070),
+(10800, 'HOSPITALIZACION', 1080),
+(10801, 'CONSULTA EXTERNA', 1080),
+(10900, 'HOSPITALIZACION', 1090),
+(10901, 'CONSULTA EXTERNA', 1090),
+(11000, 'AREA ADMINISTRATIVA', 1100);
 
 -- --------------------------------------------------------
 
@@ -120,6 +156,24 @@ CREATE TABLE `pisos` (
   `id_piso` int(11) NOT NULL,
   `nombre_piso` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pisos`
+--
+
+INSERT INTO `pisos` (`id_piso`, `nombre_piso`) VALUES
+(1001, 'S1'),
+(1002, 'S2'),
+(1010, 'P1'),
+(1020, 'P2'),
+(1030, 'P3'),
+(1040, 'P4'),
+(1050, 'P5'),
+(1060, 'P6'),
+(1070, 'P7'),
+(1080, 'P8'),
+(1090, 'P9'),
+(1100, 'P10');
 
 -- --------------------------------------------------------
 
@@ -247,7 +301,7 @@ ALTER TABLE `activos`
 -- AUTO_INCREMENT de la tabla `areas`
 --
 ALTER TABLE `areas`
-  MODIFY `id_area` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11001;
 
 --
 -- AUTO_INCREMENT de la tabla `cambios_impresoras`
@@ -277,7 +331,7 @@ ALTER TABLE `mantenimientos_telefonos`
 -- AUTO_INCREMENT de la tabla `pisos`
 --
 ALTER TABLE `pisos`
-  MODIFY `id_piso` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_piso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1101;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
