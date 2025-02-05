@@ -1,9 +1,7 @@
 <?php
 session_start();
-
-// Verificar si el usuario está autenticado
-if (!isset($_SESSION['IdCedula'])) {
-    header("Location: ../../index.php");
+if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'admin') {
+    header("Location: ../index.php");
     exit();
 }
 ?>
