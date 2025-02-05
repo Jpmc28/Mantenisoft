@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 04-02-2025 a las 21:58:49
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.1.25
+-- Servidor: localhost
+-- Tiempo de generación: 05-02-2025 a las 02:40:31
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -73,6 +73,7 @@ INSERT INTO `areas` (`id_area`, `nombre_area`, `id_piso`) VALUES
 (10203, 'RECEPCION', 1020),
 (10300, 'UNIDAD DE CUIDADOS INTENCIVOS INTERMEDI0S', 1030),
 (10301, 'RECEPCION', 1030),
+(10302, 'SISTEMAS', 1030),
 (10400, 'SALAS DE CIRUGIA', 1040),
 (10500, 'UCI', 1050),
 (10501, 'RECEPCION', 1050),
@@ -85,6 +86,46 @@ INSERT INTO `areas` (`id_area`, `nombre_area`, `id_piso`) VALUES
 (10900, 'HOSPITALIZACION', 1090),
 (10901, 'CONSULTA EXTERNA', 1090),
 (11000, 'AREA ADMINISTRATIVA', 1100);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `areas_especificas`
+--
+
+CREATE TABLE `areas_especificas` (
+  `id_area_especifica` int(11) NOT NULL,
+  `area_especifica_nombre` varchar(100) NOT NULL,
+  `id_area` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `areas_especificas`
+--
+
+INSERT INTO `areas_especificas` (`id_area_especifica`, `area_especifica_nombre`, `id_area`) VALUES
+(100010, 'FASE 1', 10100),
+(100011, 'FASE 2', 10100),
+(100012, 'REANIMACION', 10100),
+(100013, 'PROCEDIMIENTOS', 10100),
+(100014, 'PASILLOS', 10100),
+(100015, 'CONSULTORIO 1', 10100),
+(100016, 'CONSULTORIO 2', 10100),
+(100017, 'CONSULTORIO 1', 10101),
+(100018, 'CONSULTORIO 2', 10101),
+(100019, 'CONSULTORIO 3', 10101),
+(100020, 'CONSULTORIO 4', 10101),
+(100021, 'CONSULTORIO 5', 10101),
+(100022, 'LINEA DE FRENTE', 10101),
+(100023, 'LINEA DE FRENTE', 10102),
+(100024, 'TRIAGE 1', 10102),
+(100025, 'TRIAGE 2', 10102),
+(100026, 'FASE 1', 10200),
+(100027, 'FASE 2', 10200),
+(100028, 'ESTAR MEDICO', 10200),
+(100029, 'FASE 1', 10300),
+(100030, 'FASE 2', 10300),
+(100031, 'ESTAR MEDICO', 10300);
 
 -- --------------------------------------------------------
 
@@ -214,7 +255,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `correo`, `contraseña`, `Cedula`, `Rol`, `tipo_usuario`) VALUES
-(101, 'Juan Pablo Martin Corredor', 'aprendizsistemas@clinicanuevaellago.com', '12345', 1028861751, 'Auxiliar de sistemas (Sena)', 'admin');
+(101, 'Juan Pablo Martin Corredor', 'aprendizsistemas@clinicanuevaellago.com', '12345', 1028861751, 'Auxiliar de sistemas (sena)', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -234,6 +275,13 @@ ALTER TABLE `activos`
 ALTER TABLE `areas`
   ADD PRIMARY KEY (`id_area`),
   ADD KEY `id_piso` (`id_piso`);
+
+--
+-- Indices de la tabla `areas_especificas`
+--
+ALTER TABLE `areas_especificas`
+  ADD PRIMARY KEY (`id_area_especifica`),
+  ADD KEY `id_area` (`id_area`);
 
 --
 -- Indices de la tabla `cambios_impresoras`
@@ -304,6 +352,12 @@ ALTER TABLE `areas`
   MODIFY `id_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11001;
 
 --
+-- AUTO_INCREMENT de la tabla `areas_especificas`
+--
+ALTER TABLE `areas_especificas`
+  MODIFY `id_area_especifica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100032;
+
+--
 -- AUTO_INCREMENT de la tabla `cambios_impresoras`
 --
 ALTER TABLE `cambios_impresoras`
@@ -355,6 +409,12 @@ ALTER TABLE `activos`
 --
 ALTER TABLE `areas`
   ADD CONSTRAINT `areas_ibfk_1` FOREIGN KEY (`id_piso`) REFERENCES `pisos` (`id_piso`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `areas_especificas`
+--
+ALTER TABLE `areas_especificas`
+  ADD CONSTRAINT `areas_especificas_ibfk_1` FOREIGN KEY (`id_area`) REFERENCES `areas` (`id_area`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `cambios_impresoras`

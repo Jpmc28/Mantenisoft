@@ -1,31 +1,41 @@
 <?php
-//conexion
+session_start();
+
+// Verificar si el usuario está autenticado y es admin
+if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'admin') {
+    header("Location: ../index.php");
+    exit();
+}
+
+// Conexión a la base de datos
 $host = 'localhost'; 
 $user = 'root';      
 $password = '';      
 $database = 'mantenisoft'; 
 
-
 $conn = new mysqli($host, $user, $password, $database);
-
-session_start();
 
 // Verificar conexión
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("Error de conexión: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recuperar datos del formulario
     $nombre = $_POST['nombre'];
     $cargo = $_POST['cargo'];
     $email = $_POST['email'];
     $cedula = $_POST['cedula'];
+    
+    // Recuperar el id_usuario de la sesión
+    $id_usuario = $_SESSION['id_usuario'];
 
+    // Preparar la consulta de actualización
     $sql = "UPDATE usuarios SET nombre = ?, Rol = ?, correo = ?, Cedula = ? WHERE id_usuario = ?";
     $stmt = $conn->prepare($sql);
-    
+
     if ($stmt) {
-        $stmt->bind_param("ssss", $nombre, $cargo, $email, $cedula);
+        $stmt->bind_param("ssssi", $nombre, $cargo, $email, $cedula, $id_usuario);
         
         if ($stmt->execute()) {
             header("Location: ../index.php"); 
@@ -41,5 +51,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 $conn->close();
-
 ?>
+
