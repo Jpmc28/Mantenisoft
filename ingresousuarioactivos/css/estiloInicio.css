@@ -1,0 +1,199 @@
+html, body {
+    overflow: hidden; 
+    height: 100vh; 
+    margin: 0; 
+    background: url("img/Olvide mi contraseña (1).png");
+    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    display: flex-end;
+    font-weight: bold;
+    font-style: unset;
+}
+#personalydatots{
+    display: flex;
+    }    
+#tablaPeronal{
+    background: #1c4a60;
+    height: 50vh;
+    width: 40vh;
+    margin-top: 5vh;
+    margin-left: 25vh;
+    border-radius: 50px;
+    font-size: 2vh;
+    padding: 3vh;
+    align-items: center;
+    align-content: center;
+    font-weight: 700;
+    text-align: center;
+}
+h3{
+  color: white;
+}
+#boton_actualizar{
+    height: 6vh;
+    width: 20vh;
+    border-radius: 50px;
+    margin-top: 2vh;
+    cursor: pointer;
+    font-size: 2.5vh;
+    border: none;
+    background-color: #fbfefe;
+}
+#cabeza{
+  width: 15vh;
+}
+#foto1{
+  width: 10vh;
+  height: 10vh;
+  transition: 0.3s ease-in-out;
+}
+#foto1:hover{
+  transform: translateY(-10px);
+}
+#foto2{
+  width: 10vh;
+  height: 10vh;
+  transition: 0.3s ease-in-out;
+}
+#foto2:hover{
+  transform: translateY(-10px);
+}
+#foto3{
+  width: 11vh;
+  height: 9vh;
+  transition: 0.3s ease-in-out;
+}
+#foto3:hover{
+  transform: translateY(-10px);
+}
+#foto4{
+  width: 10vh;
+  height: 10vh;
+  transition: 0.3s ease-in-out;
+}
+#foto4:hover{
+  transform: translateY(-10px);
+}
+#boton_actualizar, a{
+    text-decoration: none;
+    color: black;         
+    outline: none; 
+    font-weight: 700;
+}
+#tablaServicios {
+    background-color:  #1c4a60;
+    margin-left: 10vh;
+    margin-top: 5vh;
+    border-radius: 50px;
+    width: 90vh;
+    height: auto; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 2vh; 
+}
+#servicios {
+    margin-top: 3vh;
+    background-color: #fbfefe;
+    border-radius: 50px;
+    width: 50vh;
+    height: 7vh;
+    font-size: 5vh;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+}
+#serviciosRealizados {
+    background-color: #1c4a60;
+    height: 30vh;
+    width: 90vh;
+    margin-top: 3vh;
+    padding-top: 9vh;
+    border-radius: 25px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+#logocli{
+  width: 30vh;
+  margin-left: 2vh;
+}
+
+.menu-container {
+    margin-top: 5vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .menu-icon {
+    width: 10vh;
+    height: 10vh;
+    background-color: #9d9d9e;
+    border-radius: 2vh;
+    border: 0.3vh solid #1c4a60;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  .menu-icon img {
+    width: 10vh;
+    height: 10vh;
+    transition: 0.3s ease-in-out;
+  }
+  .menu-icon img:hover{
+    transform: translateY(-10px);
+  }
+
+  /* Menú desplegable */
+  .dropdown-menu {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    background-color: #9d9d9e;
+    border: 0.3vh solid #1c4a60;
+    border-radius: 2vh;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    white-space: nowrap;
+    width: 60vh;
+    height: 10vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1.0s ease-in-out; 
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .dropdown-menu img {
+    margin: 2vh;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 2vh;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .menu-container:hover .menu-icon {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .menu-container:hover .dropdown-menu {
+    width: 60vh; 
+    opacity: 1;
+    visibility: visible;
+  }
+  @media (max-width: 1920px) {
+    html, body {
+        background: url("img/Olvide\ mi\ contraseña\ \(2\).png");
+        background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+    }
+  }

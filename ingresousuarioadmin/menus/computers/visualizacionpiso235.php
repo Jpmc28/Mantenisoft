@@ -15,5 +15,15 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'admin') {
     <title>mantenisoft</title>
 </head>
 <body>
+    <form action="back/subir_imagen.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="imagen" accept="image/*" required>
+        <input type="text"name="nombre">
+        <input type="text" name="tipo">
+        <input type="text" name="estado">
+        <input type="text" name="area">
+        <input type="text" name="id_usuario">
+        <input type="text" name="NPlaca">
+        <button type="submit">subir imagen</button>
+    </form>
 </body>
 </html>

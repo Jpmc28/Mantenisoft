@@ -1,0 +1,108 @@
+html, body {
+    overflow: hidden; 
+    height: 100vh; 
+    margin: 0; 
+    background: url("img/Olvide mi contraseña (1).png");
+    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    display: flex-end;
+    font-weight: bold;
+    font-style: unset;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+#seccion_actualizar_datos{
+    background: #1c4a60;
+    height: 60vh;
+    width: 100vh;
+    border-radius: 5vh;
+    margin-left: 40vh;
+    display: flex;
+}
+#logo{
+    background: #d9d9d9;
+    margin-top: 3vh;
+    width: 50vh;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    border-radius: 5vh;
+    height: 15vh;
+    margin-left: 5vh;
+}
+#logoCA{
+    width: 30vh;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    margin-top: 4vh;
+  }
+.registrar{
+    text-align: center;
+    background:#ffffff;
+    width: 50vh;
+    height: 5vh;
+    margin-top: 2vh;
+    margin-left: 5vh;
+    border-radius: 5vh;
+    border: none;
+    font-size: 2.5vh;
+}
+#imgfuera{
+    background: #64718e;
+    width: 35vh;
+    margin-left: 5vh;
+    border-radius: 5vh;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 10vh;
+    height: 40vh;
+}
+#botones{
+    display: flex;
+    margin-left: 70vh;
+}
+#guardar{
+    cursor: pointer;
+    margin: 2vh;
+    border-radius: 4vh;
+    border: none;
+    height: 10vh;
+    width: 15vh;
+    font-size: 2.5vh;
+}
+#cancelar{
+    cursor: pointer;
+    margin: 2vh;
+    border-radius: 4vh;
+    border: none;
+    height: 10vh;
+    width: 15vh;
+    font-size: 2.5vh;
+    background-color: #a0a0b4;
+}
+#logosof{
+    width: 30vh;
+}
+@media (max-width: 1920px) {
+    html, body {
+        background: url("img/Olvide\ mi\ contraseña\ \(2\).png");
+        background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+    }
+    #seccion_actualizar_datos{
+        margin-left: 55vh;
+    }
+    #botones{
+        margin-left: 85vh;
+    }
+  }
