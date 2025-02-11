@@ -54,23 +54,24 @@ $stmt->execute();
 $resultado = $stmt->get_result();
 
 if ($resultado->num_rows > 0) {
-    echo "<h1>Activos en el piso: $piso</h1>";
-    echo "<table border='1'>";
-    echo "<tr><th>ID</th><th>Nombre</th><th>Tipo</th><th>Estado</th><th>Placa</th><th>Área</th></tr>";
-
+    echo "<div class='contenedor'>";
+    echo "<h1>¿Qué equipo quieres ver?</h1>";
+    echo "<div class='activos'>"; // Contenedor con Grid
+    
     while ($fila = $resultado->fetch_assoc()) {
-        echo "<tr>
-                <td>{$fila['id_activo']}</td>
-                <td>{$fila['nombre']}</td>
-                <td>{$fila['tipo']}</td>
-                <td>{$fila['estado']}</td>
-                <td>{$fila['NPlaca']}</td>
-                <td>{$fila['nombre_area']}</td>
-              </tr>";
+        echo "<div class='activo'>{$fila['nombre']}</div>";
     }
-    echo "</table>";
+    
+    echo "</div>"; // Cierre de .activos
+    echo "</div>"; // Cierre de .contenedor    
+
 } else {
-    echo "<p style='color: red;'>No hay activos registrados en este piso.</p>";
+    echo "<div class='contenedor'>";
+    echo "<h1>¿Qué equipo quieres ver?</h1>";
+    echo "<div class='activos'>";
+        echo "<div class='activo'style='color: red;'>No hay activos registrados en este piso.</div>";
+    echo "</div>";
+    echo "</div>";
 }
 
 // Cerrar conexión
@@ -78,5 +79,17 @@ $stmt->close();
 $conn->close();
 
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/visualizacionp1.css">
+    <link rel="website icon" href="img/GtuzsKu2ryrS5m0Z-removebg-preview1.png">
+    <title>mantenisoft</title>
+</head>
+<body>
+</body>
+</html>
 
 
