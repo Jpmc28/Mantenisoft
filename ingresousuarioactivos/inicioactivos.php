@@ -27,7 +27,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
             <a href="actualizardatos.php"><button id="boton_actualizar">Actualizar</button></a>
         </section>
         <section id="tablaServicios">
-            <section id="servicios"><p>Activos Insertadoss</p></section>
+            <section id="servicios"><p>Activos Insertados</p></section>
             <section id="serviciosRealizados">
             </section>
         </section>
