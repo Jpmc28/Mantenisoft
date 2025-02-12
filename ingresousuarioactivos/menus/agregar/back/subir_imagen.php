@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = strtoupper($_POST["nombre"]);
     $tipo = $_POST["tipo"];
-    $estado = "activo";  // Estado fijo
+    $estado = "activo";  // Estado fijo para ingresar activos
     $area = $_POST["area"];
     $subarea = $_POST["subarea"] ?: NULL; // Subárea opcional
     $id_usuario = $_SESSION["id_usuario"];
