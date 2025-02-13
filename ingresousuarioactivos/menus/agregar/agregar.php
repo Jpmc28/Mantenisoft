@@ -50,7 +50,7 @@ $result_areas = $conn->query($sql_areas);
                 <option value="portatil">Portátil</option>
             </select>
 
-            <label for="area">Área:</label>
+            <label for="area"></label>
             <select name="area" id="area" required>
                 <option value="">Seleccione un área</option>
                 <?php while ($row = $result_areas->fetch_assoc()) { ?>
@@ -58,7 +58,7 @@ $result_areas = $conn->query($sql_areas);
                 <?php } ?>
             </select>
 
-            <label for="subarea">Subárea:</label>
+            <label for="subarea"></label>
             <select name="subarea" id="subarea">
                 <option value="">(Opcional) Seleccione una subárea</option>
             </select>
