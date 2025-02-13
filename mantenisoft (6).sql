@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-02-2025 a las 22:00:20
+-- Tiempo de generación: 13-02-2025 a las 18:53:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -336,8 +336,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `correo`, `contraseña`, `Cedula`, `Rol`, `tipo_usuario`) VALUES
-(101, 'Juan Pablo Martin Corredor', 'aprendizsistemas@clinicanuevaellago.com', '12345', 1028861751, 'Auxiliar de sistemas', 'admin'),
-(201, 'Cesar Camilo Ochoa Suarez', 'cesar.ochoa@clinicanuevaellago.com', 'activos', 123456789, 'auxiliar activos', 'activos');
+(101, 'Juan Pablo Martin Corredor', 'aprendizsistemas@clinicanuevaellago.com', '12345', 1028861751, 'Auxiliar de sistemas (SENA)', 'admin'),
+(201, 'Cesar Camilo Ochoa Suarez', 'cesar.ochoa@clinicanuevaellago.com', 'activos', 123456789, 'auxiliar activos', 'activos'),
+(301, 'Visualizador Prueba', 'visualizador@prueba', 'visualizador', 987654321, 'prueba', 'visualizador');
 
 --
 -- Índices para tablas volcadas
@@ -487,7 +488,7 @@ ALTER TABLE `pisos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=302;
 
 --
 -- Restricciones para tablas volcadas

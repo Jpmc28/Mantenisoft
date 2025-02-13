@@ -14,10 +14,6 @@ $conn = new mysqli($host, $user, $password, $database);
 // Obtener áreas
 $sql_areas = "SELECT id_area, nombre_area FROM areas";
 $result_areas = $conn->query($sql_areas);
-
-// Obtener subáreas
-$sql_subareas = "SELECT id_area_especifica, area_especifica_nombre FROM areas_especificas";
-$result_subareas = $conn->query($sql_subareas);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,6 +23,7 @@ $result_subareas = $conn->query($sql_subareas);
     <link rel="stylesheet" href="css/ingresardatos.css">
     <link rel="website icon" href="img/GtuzsKu2ryrS5m0Z-removebg-preview1.png">
     <title>Mantenisoft - Ingreso de Activos</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -53,18 +50,17 @@ $result_subareas = $conn->query($sql_subareas);
                 <option value="portatil">Portátil</option>
             </select>
 
-            <select name="area" required>
+            <label for="area">Área:</label>
+            <select name="area" id="area" required>
                 <option value="">Seleccione un área</option>
                 <?php while ($row = $result_areas->fetch_assoc()) { ?>
                     <option value="<?= $row['id_area'] ?>"><?= $row['nombre_area'] ?></option>
                 <?php } ?>
             </select>
 
-            <select name="subarea">
+            <label for="subarea">Subárea:</label>
+            <select name="subarea" id="subarea">
                 <option value="">(Opcional) Seleccione una subárea</option>
-                <?php while ($row = $result_subareas->fetch_assoc()) { ?>
-                    <option value="<?= $row['id_area_especifica'] ?>"><?= $row['area_especifica_nombre'] ?></option>
-                <?php } ?>
             </select>
 
             <input type="text" name="NPlaca" placeholder="Número de la placa" required>
@@ -75,6 +71,23 @@ $result_subareas = $conn->query($sql_subareas);
             <div id="statusMessage"></div>
         </form>
     </div>
+
+<script>
+$(document).ready(function() {
+    $('#area').change(function() {
+        var area_id = $(this).val();
+        
+        $.ajax({
+            url: 'back/obtener_subareas.php',
+            type: 'POST',
+            data: { area_id: area_id },
+            success: function(response) {
+                $('#subarea').html(response);
+            }
+        });
+    });
+});
+</script>
 <script src="js/script.js"></script>
 </body>
 </html>
