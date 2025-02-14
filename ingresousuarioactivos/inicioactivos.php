@@ -37,9 +37,8 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
       <img src="img/imagen_principal-removebg-preview.png" alt="Menú">
     </div>
     <div class="dropdown-menu">
-      <a href="menus/telefono.php"><img src="img/telefono-removebg-preview.png" alt="Inserte equipo telefonico" title="Inserte equipo telefonico" id="foto1"></a>
-      <a href="menus/printer.php"><img src="img/impresora-removebg-preview.png" alt="Inserte equipo de impresion" title="Inserte equipo de impresion" id="foto2"></a>
-      <a href="menus/computers.php"><img src="img/computadores-removebg-preview.png" alt="Inserte equipo de computo" title="Inserte equipo de computo" id="foto3"></a>
+    <a href="menus/computers.php"><img src="img/imagen_consulta1.png" alt="Consulte los activos" title="Consulte los activos" id="foto2"></a>
+      <a href="menus/computers.php"><img src="img/ingresoactivos1.jpg" alt="Insertar o dar de baja activos" title="Insertar o dar de baja activos" id="foto4"></a>
     </div>
   </div>
 </body>
