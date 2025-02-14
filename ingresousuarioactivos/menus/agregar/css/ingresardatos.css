@@ -1,15 +1,17 @@
 html, body {
-    overflow-x: hidden; /* Evita desplazamiento horizontal */
-    min-height: 100vh; /* 🔹 Permite expandirse si el contenido lo requiere */
-    margin: 0;
-    background: url("img/Olvide mi contraseña (1).png") no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
+    overflow: hidden; 
+    height: 100vh; 
+    margin: 0; 
+    background: url("img/Olvide mi contraseña (1).png");
+    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    display: flex-end;
     font-weight: bold;
+    font-style: unset;
     align-items: center;
+    align-content: center;
     justify-content: center;
-    font-family: Arial, sans-serif;
     text-align: center;
 }
 /* 🔹 Contenedor Principal */
@@ -17,6 +19,7 @@ html, body {
     display: flex;
     gap: 50px; /* Espacio entre el formulario y el video */
     align-items: center;
+    margin-left: 28vh;
 }
 
 /* 🔹 Diseño del DIV del video */
@@ -85,6 +88,26 @@ button:hover {
 
 .error {
     color: #e74c3c; /* Rojo ❌ */
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+#texto{
+    background-color: #1b785c;
+    border-radius: 5vh;
+    width: 45vh;
+}
+
+#texto h2{
+    color: white;
+}
+
+#imagen{
+    border-radius: 2vh;
+    background-color: rgb(109, 150, 150);
 }
 
 @media (max-width: 1920px) {

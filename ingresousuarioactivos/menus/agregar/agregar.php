@@ -30,16 +30,17 @@ $result_areas = $conn->query($sql_areas);
         <div class="info-box">
             <h2>📌 Instrucciones</h2>
             <ul>
-                <li><strong>📌 Nombre del Dispositivo:</strong> Ingresa el nombre exacto del activo.</li>
+                <li><strong>📌 Nombre del Dispositivo:</strong> Ingresa el nombre exacto del activo (marca o modelo).</li>
                 <li><strong>🖥️ Tipo:</strong> Selecciona si es computador, teléfono, impresora o portátil.</li>
                 <li><strong>📍 Área:</strong> Indica en qué área está ubicado el dispositivo.</li>
                 <li><strong>📌 Subárea:</strong> (Opcional) Especifica un área más detallada.</li>
-                <li><strong>🔢 Número de Placa:</strong> Introduce el número de identificación del activo.</li>
+                <li><strong>🔢 Número de Placa:</strong> Introduce el número de identificación del activo (LC000000).</li>
                 <li><strong>🖼️ Imagen:</strong> Sube una imagen del activo.</li>
             </ul>
         </div>
         
         <form action="back/subir_imagen.php" method="post" enctype="multipart/form-data" id="uploadForm">
+            <div id="texto"><H2>Aqui podra ingresar activos</H2></div>
             <input type="text" name="nombre" placeholder="Nombre del Dispositivo" required>
             
             <select name="tipo" required>
@@ -64,7 +65,7 @@ $result_areas = $conn->query($sql_areas);
             </select>
 
             <input type="text" name="NPlaca" placeholder="Número de la placa" required>
-            <input type="file" name="imagen" accept="image/*" required>
+            <input id="imagen" type="file" name="imagen" accept="image/*" required>
 
             <button type="submit" id="submitButton">Guardar</button>
             <a href="../../inicioactivos.php" class="back-button">Volver al menú</a>
