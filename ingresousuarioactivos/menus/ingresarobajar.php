@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
-    header("Location: ../index.php");
+    header("Location: ../../index.php");
     exit();
 }
 ?>
@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/editar_datosyagregar.css">
+    <link rel="stylesheet" href="css/ingresarobajar.css">
     <link rel="website icon" href="img/GtuzsKu2ryrS5m0Z-removebg-preview1.png">
     <title>mantenisoft</title>
 </head>
@@ -45,7 +45,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
                 : "Al dar aceptar entiende que ingresará un activo. Quedará guardado en la base de datos por 1 mes.<br>Al concluir un mes, el activo será eliminado.";
 
             document.getElementById("mensaje").innerHTML = mensaje;
-            document.getElementById("aceptar").href = tipo === 'baja' ? "baja/baja.php" : "agregar/agregar.php";
+            document.getElementById("aceptar").href = tipo === 'baja' ? "baja/baja1.php" : "agregar/agregar.php";
             document.getElementById("advertencia").style.display = "flex";
         }
 

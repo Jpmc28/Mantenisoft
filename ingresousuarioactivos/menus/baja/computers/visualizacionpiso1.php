@@ -50,7 +50,7 @@ if (!$stmt) {
     die("<p style='color: red;'>Error en la preparación de la consulta: " . $conn->error . "</p>");
 }
 
-$stmt->bind_param("ss", $piso_id,$piso_id);
+$stmt->bind_param("s", $piso_id);
 $stmt->execute();
 $resultado = $stmt->get_result();
 
@@ -92,5 +92,3 @@ $conn->close();
 <body>
 </body>
 </html>
-
-
