@@ -15,6 +15,10 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
     <title>mantenisoft</title>
 </head>
 <body>
-    
+    <div>
+        <a href="consulta/impresoras.php"><img src="" alt="Impresora"></a>
+        <a href="consulta/telefonos.php"><img src="" alt="Telefonos"></a>
+        <a href="consulta/computers.php"><img src="" alt="Computadores"></a>
+    </div>
 </body>
 </html>
