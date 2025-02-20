@@ -42,7 +42,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
         function mostrarAdvertencia(tipo) {
             let mensaje = tipo === 'baja'
                 ? "Al dar aceptar entiende que dará de baja un activo. Quedará guardado en la base de datos por 1 mes.<br>Al concluir un mes, el activo será eliminado."
-                : "Al dar aceptar entiende que ingresará un activo. Quedará guardado en la base de datos por 1 mes.<br>Al concluir un mes, el activo será eliminado.";
+                : "Al dar aceptar entiende que ingresará un activo. Esto se vera reflejado en la base de datos y quedara el registro de a que hora y quien lo ingreso.";
 
             document.getElementById("mensaje").innerHTML = mensaje;
             document.getElementById("aceptar").href = tipo === 'baja' ? "baja/baja1.php" : "agregar/agregar.php";

@@ -16,9 +16,9 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
 </head>
 <body>
     <div id="tipo">
-        <div id="impresoras"><h2>impresoras</h2><img src="img/" alt=""></div>
-        <div id="telefonos"><h2>telefonos</h2><img src="img/" alt=""></div>
-        <div id="computadores"><h2>computadores</h2><img src="img/" alt=""></div>
+        <a href="bajai.php"><img src="img/" alt="impresoras"></a>
+        <a href="bajat.php"><img src="img/" alt="telefonos"></a>
+        <a href="baja.php"><img src="img/" alt="computadores"></a>
     </div>
 </body>
 </html>
