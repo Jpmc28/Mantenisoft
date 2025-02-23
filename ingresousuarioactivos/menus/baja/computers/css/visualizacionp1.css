@@ -58,6 +58,10 @@ h1 {
     background-color: #89C2D9;
 }
 
+a{
+    text-decoration: none;
+    border: none;
+}
 
 @media (max-width: 1920px) {
   html, body {

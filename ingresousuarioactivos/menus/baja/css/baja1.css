@@ -33,15 +33,24 @@ html, body {
     justify-content: center;
     align-items: center;
 }
-img{
+.img{
     transition: 0.3s ease-in-out;
+    height: 15vh;
+    width: 20VH;
   }
-img:hover{
+.img:hover{
     transform: translateY(-10px);
   }
-/*tamaño de la imagen*/
-img{
-    height: 15vh;
+#menu{
+    background-color: #4d5f68;
+    border-radius: 5vh;
+    height: 6vh;
+    width: 15vh;
+    margin-left: 20vh;
+}
+#menu, img{
+    margin-top: 0.5vh;
+    width: 5vh;
 }
 /*responsive del fondo*/
 @media (max-width: 1920px) {

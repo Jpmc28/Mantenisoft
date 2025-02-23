@@ -39,10 +39,11 @@ if (!$piso_id) {
 }
 
 // Preparar la consulta
-$sql = "SELECT a.id_activo, a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area
+$sql = "SELECT a.id_activo, a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area, es.nombre_dominio
         FROM activos a
         JOIN areas ar ON a.id_area = ar.id_area
         JOIN pisos p ON ar.id_piso = p.id_piso
+        JOIN especificaciones es ON a.id_activo = es.id_activo
         WHERE p.id_piso = ? and a.tipo = 'computador' or p.id_piso = ? and a.tipo = 'portatil';";
 
 $stmt = $conn->prepare($sql);
@@ -60,7 +61,7 @@ if ($resultado->num_rows > 0) {
     echo "<div class='activos'>"; // Contenedor con Grid
     
     while ($fila = $resultado->fetch_assoc()) {
-        echo "<div class='activo'>{$fila['nombre']}</div>";
+        echo "<a href='eliminar_activo/elimarcomputador.php'><div class='activo'>{$fila['nombre_dominio']}</div></a>";
     }
     
     echo "</div>"; // Cierre de .activos

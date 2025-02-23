@@ -3,19 +3,50 @@ html, body {
     height: 100vh; 
     margin: 0; 
     background: url("img/Olvide mi contraseña (1).png");
-    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    font-family: Arial, sans-serif;
     display: flex;
-    font-weight: bold;
-    font-style: unset;
+    text-align: center;
+    align-items: center;
+}
+#todo{
+    background-color:  #1c4a60;
+    border-radius: 5vh;
+    width: 80vh;
+    height: 50vh;
+    text-align: center;
     align-items: center;
     align-content: center;
-    justify-content: center;
-    font-family: Arial, sans-serif;
-    text-align: center;
+    margin-left: 58vh;
 }
-
+#texto{
+    background-color: aliceblue;
+    border-radius: 5vh;
+    margin-top: 2vh;
+    width: 50vh;
+    margin-left: 15vh;
+}
+.img{
+    margin-top: 5vh;
+    transition: 0.3s ease-in-out;
+    margin: 5vh;
+    margin-top: 5;
+    width: 13vh;
+}
+.img:hover{
+    transform: translateY(-10px);
+  }
+#menu{
+    margin-top: 3vh;
+    background-color: #4d5f68;
+    border-radius: 5vh;
+    height: 6vh;
+    width: 15vh;
+    margin-left: 37vh;
+}
+#menu, img{
+    margin-top: 0.5vh;
+    width: 5vh;
+}
 /*responsive del fondo*/
 @media (max-width: 1920px) {
     html, body {

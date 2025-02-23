@@ -15,10 +15,12 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
     <title>mantenisoft</title>
 </head>
 <body>
-    <div>
-        <a href="consulta/impresoras.php"><img src="" alt="Impresora"></a>
-        <a href="consulta/telefonos.php"><img src="" alt="Telefonos"></a>
-        <a href="consulta/computers.php"><img src="" alt="Computadores"></a>
+    <div id="todo">
+        <div id="texto"><h1>Escoge el dispositivo que quieres observar</h1></div>
+        <a href="consulta/impresoras.php"><img src="img/impresora-removebg-preview.png" alt="Impresora" class="img"></a>
+        <a href="consulta/telefonos.php"><img src="img/telefono-removebg-preview.png" alt="Telefonos" class="img"></a>
+        <a href="consulta/computers.php"><img src="img/computadores-removebg-preview.png" alt="Computadores" class="img"></a>
+        <div id="menu"><a href="../inicioactivos.php"><img src="img/home-removebg-preview.png" alt="devolver"></a></div>
     </div>
 </body>
 </html>

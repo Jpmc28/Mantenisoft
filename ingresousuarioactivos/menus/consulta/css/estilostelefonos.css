@@ -1,0 +1,112 @@
+html, body {
+    overflow: hidden; 
+    height: 100vh; 
+    margin: 0; 
+    background: url("img/Olvide mi contraseña (1).png");
+    background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    display: flex-end;
+    font-weight: bold;
+    font-style: unset;
+}
+#texto {
+    background: #545454;
+    border-radius: 5vh;
+    font-size: 2vh;
+    color: white;
+    text-align: center;
+    padding: 2vh;
+    margin-bottom: 2vh;
+    width: 80vh;
+}
+#elementosdesglozados {
+    background: #1c4a60;
+    width: 90vh;
+    max-width: 100vh;
+    border-radius: 5vh;
+    padding: 2vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    text-align: center; 
+}
+#separador {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    gap: 2vh;
+    align-items: center; 
+    justify-content: center; 
+    width: 100%; 
+    padding: 1vh;
+    text-align: center; 
+}
+.piso {
+    background: #e0e0e0;
+    border-radius: 2vh;
+    padding: 3vh 1vh;
+    text-align: center;
+    font-size: 1.2vh;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    color: #333;
+    width: 15vh;
+    height: 5vh;
+    margin: 2vh;
+}
+.piso:hover {
+    background: #d0d0d0;
+    cursor: pointer;
+}
+.piso[data-floor="S2"]::before,
+.piso[data-floor="S1"]::before,
+.piso[data-floor="1"]::before,
+.piso[data-floor="2"]::before {
+    content: "📱";
+    font-size: 3vh;
+    margin-bottom: 1vh;
+}
+.piso[data-floor="3"]::before,
+.piso[data-floor="4"]::before,
+.piso[data-floor="5"]::before,
+.piso[data-floor="6"]::before {
+    content: "📟";
+    font-size: 3vh;
+    margin-bottom: 1vh;
+}
+.piso[data-floor="7"]::before,
+.piso[data-floor="8"]::before,
+.piso[data-floor="9"]::before,
+.piso[data-floor="10"]::before {
+    content: "📲";
+    font-size: 3vh;
+    margin-bottom: 1vh;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+#imgicon{
+    width: 12vh;
+}
+#logocli{
+    width: 30vh;
+    margin-left: 2vh;
+  }
+@media (max-width: 1920px) {
+    html, body {
+        background: url("img/Olvide\ mi\ contraseña\ \(2\).png");
+        background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+    }
+  }
