@@ -3,18 +3,42 @@ html, body {
     height: 100vh; 
     margin: 0; 
     background: url("img/Olvide mi contraseña (1).png");
-    display: flex;
-    font-weight: bold;
-    font-style: unset;
+    justify-content: center;
     font-family: Arial, sans-serif;
+    text-align: center;
+    align-items: center;
+    align-content: center;
 }
 #tipo{
-    margin-top: 30vh;
+    display: flex;
     background-color: #1c4a60;
     border-radius: 5vh;
-    margin-left: 70vh;
     height: 50vh;
+    width: 100vh;
+    margin-left: 45vh;
 }
+
+#pregunta{
+    height: 50vh;
+    border-radius:  5vh;
+    background-color: aliceblue;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+#seleccion{
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    transition: 0.3s ease-in-out;
+  }
+img:hover{
+    transform: translateY(-10px);
+  }
 /*tamaño de la imagen*/
 img{
     height: 15vh;
