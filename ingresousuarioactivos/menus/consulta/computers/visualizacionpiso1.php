@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'admin') {
+if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
     header("Location: ../../../../index.php");
     exit();
 }
@@ -67,7 +67,7 @@ if ($resultado->num_rows > 0) {
     echo "<div class='activos'>"; // Contenedor con Grid
     
     while ($fila = $resultado->fetch_assoc()) {
-        echo "<a href='hojadevida/hojadevida.php?id_activo=" . $fila['id_activo'] . "'><div class='activo'>" . $fila['nombre_dominio'] . "</div></a>";
+        echo "<a href='../eliminar_activo/elimarcomputador.php?id_activo=" . $fila['id_activo'] . "'><div class='activo'>" . $fila['nombre_dominio'] . "</div></a>";
     }
     
     echo "</div>"; // Cierre de .activos
@@ -99,5 +99,3 @@ $conn->close();
 <body>
 </body>
 </html>
-
-

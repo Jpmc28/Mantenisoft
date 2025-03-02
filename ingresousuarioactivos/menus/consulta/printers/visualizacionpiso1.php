@@ -1,11 +1,5 @@
 <?php
 
-session_start();
-if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'admin') {
-    header("Location: ../../../../index.php");
-    exit();
-}
-
 $host = 'localhost';
 $user = 'root';      
 $password = '';      
@@ -45,19 +39,18 @@ if (!$piso_id) {
 }
 
 // Preparar la consulta
-$sql = "SELECT a.id_activo, a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area, es.nombre_dominio
+$sql = "SELECT a.id_activo, a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area
         FROM activos a
         JOIN areas ar ON a.id_area = ar.id_area
         JOIN pisos p ON ar.id_piso = p.id_piso
-        JOIN especificaciones es ON a.id_activo = es.id_activo
-        WHERE p.id_piso = ? and a.tipo = 'computador' or p.id_piso = ? and a.tipo = 'portatil';";
+        WHERE p.id_piso = ? and a.tipo = 'impresora';";
 
 $stmt = $conn->prepare($sql);
 if (!$stmt) {
     die("<p style='color: red;'>Error en la preparación de la consulta: " . $conn->error . "</p>");
 }
 
-$stmt->bind_param("ss", $piso_id, $piso_id);
+$stmt->bind_param("s", $piso_id);
 $stmt->execute();
 $resultado = $stmt->get_result();
 
@@ -67,7 +60,7 @@ if ($resultado->num_rows > 0) {
     echo "<div class='activos'>"; // Contenedor con Grid
     
     while ($fila = $resultado->fetch_assoc()) {
-        echo "<a href='hojadevida/hojadevida.php?id_activo=" . $fila['id_activo'] . "'><div class='activo'>" . $fila['nombre_dominio'] . "</div></a>";
+        echo "<div class='activo'>{$fila['nombre']}</div>";
     }
     
     echo "</div>"; // Cierre de .activos
@@ -99,5 +92,3 @@ $conn->close();
 <body>
 </body>
 </html>
-
-

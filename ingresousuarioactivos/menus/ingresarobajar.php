@@ -20,7 +20,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
 
         <div class="botones">
             <div class="menu-icon" onclick="mostrarAdvertencia('baja')">
-                <h2>Dar equipo de baja</h2>
+                <h2>Dar equipo de baja o moverlo</h2>
             </div>
 
             <div class="menu-icon" onclick="mostrarAdvertencia('agregar')">

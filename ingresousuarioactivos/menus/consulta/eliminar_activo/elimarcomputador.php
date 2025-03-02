@@ -22,27 +22,51 @@ if (!isset($_GET['id_activo'])) {
 }
 $id_activo = intval($_GET['id_activo']);
 
-// Consulta para obtener la información del equipo
+// Consulta para obtener la información del equipo y periféricos
 $sql = "SELECT a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area, 
-               es.procesador, es.ram, es.almacenamiento, es.sistema_operativo, es.software_instalado, es.nombre_dominio, ars.area_especifica_nombre
+               es.procesador, es.ram, es.almacenamiento, es.sistema_operativo, es.software_instalado, es.nombre_dominio, 
+               ars.area_especifica_nombre, per.placa, per.tipo
         FROM activos a
         JOIN areas ar ON a.id_area = ar.id_area
         JOIN especificaciones es ON a.id_activo = es.id_activo
         LEFT JOIN areas_especificas ars ON a.id_areas_especificas = ars.id_area_especifica
+        LEFT JOIN perifericos per ON a.id_activo = per.id_activo
         WHERE a.id_activo = ?";
+
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id_activo);
 $stmt->execute();
 $resultado = $stmt->get_result();
 
-// Verificar si hay resultados
-if ($resultado->num_rows == 0) {
+$monitor = "";
+$teclado = "";
+$mouse = "";
+$equipo = null;
+
+// Leer los resultados
+while ($fila = $resultado->fetch_assoc()) {
+    if (!$equipo) {
+        $equipo = $fila; // Guarda la información del equipo en la primera iteración
+    }
+    
+    // Asignar cada periférico a su respectivo apartado
+    if ($fila['tipo'] === 'monitor') {
+        $monitor = htmlspecialchars($fila['placa']);
+    } elseif ($fila['tipo'] === 'teclado') {
+        $teclado = htmlspecialchars($fila['placa']);
+    } elseif ($fila['tipo'] === 'mouse') {
+        $mouse = htmlspecialchars($fila['placa']);
+    }
+}
+
+// Verificar si se encontró información del equipo
+if (!$equipo) {
     die("<p style='color: red;'>No se encontró información para el equipo seleccionado.</p>");
 }
 
-$equipo = $resultado->fetch_assoc();
-
+$stmt->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -63,7 +87,10 @@ $equipo = $resultado->fetch_assoc();
                     <p><strong>Estado:</strong> <?php echo htmlspecialchars($equipo['estado']); ?></p>
                     <p><strong>Número de Placa:</strong> <?php echo htmlspecialchars($equipo['NPlaca']); ?></p>
                     <p><strong>Área:</strong> <?php echo htmlspecialchars($equipo['nombre_area']); ?></p>
-                    <p><strong>Area Especifica:</strong> <?php echo htmlspecialchars($equipo['area_especifica_nombre']); ?></p>
+                    <p><strong>Area Especifica:</strong> <?php echo htmlspecialchars($equipo['area_especifica_nombre'])?: "No registrado"; ?></p>
+                    <p><strong>Monitor:</strong> <?php echo $monitor ?: "No registrado"; ?></p>
+                    <p><strong>Teclado:</strong> <?php echo $teclado ?: "No registrado"; ?></p>
+                    <p><strong>Mouse:</strong> <?php echo $mouse ?: "No registrado"; ?></p>
                 </div>
                 <div class="imagen-container">
                     <div class="imagen-wrapper">
@@ -77,13 +104,9 @@ $equipo = $resultado->fetch_assoc();
                 </div>
             </div>
             <div class="botones">
-                <form action="transladar_equipo.php" method="GET">
+                <form action="agregar.php" method="GET">
                     <input type="hidden" name="id_activo" value="<?php echo $id_activo; ?>">
-                    <button type="submit" class="btn actualizar">Transladar Equipo</button>
-                </form>
-                <form action="procesar_eliminacion.php" method="POST">
-                    <input type="hidden" name="id_activo" value="<?php echo $id_activo; ?>">
-                    <button type="submit" class="btn eliminar">Eliminar Computador</button>
+                    <button type="submit" class="btn actualizar">Agregar Perifericos</button>
                 </form>
             </div>
         </div>

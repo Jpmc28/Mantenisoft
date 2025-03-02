@@ -4,8 +4,8 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
     header("Location: ../index.php");
     exit();
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +13,26 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estiloInicio.css">
     <link rel="website icon" href="img/GtuzsKu2ryrS5m0Z-removebg-preview1.png">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          fetch("obtener_activos.php")
+              .then(response => response.json())
+              .then(data => {
+                  if (data.error) {
+                      console.error("Error:", data.error);
+                      return;
+                  }
+                  const lista = document.getElementById("listaActivos");
+                  lista.innerHTML = "";
+                  data.forEach(activo => {
+                      const item = document.createElement("li");
+                      item.innerHTML = `<strong>${activo.nombre}</strong> - Placa: ${activo.NPlaca}`;
+                      lista.appendChild(item);
+                  });
+              })
+              .catch(error => console.error("Error al obtener los activos:", error));
+      });
+      </script>
     <title>InicioAdmin</title>
 </head>
 <body>
@@ -27,8 +47,13 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
             <a href="actualizardatos.php"><button id="boton_actualizar">Actualizar</button></a>
         </section>
         <section id="tablaServicios">
-            <section id="servicios"><p>Activos Insertados</p></section>
+            <section id="servicios">
+                <p>Activos Insertados</p>
+            </section>
             <section id="serviciosRealizados">
+                <div id="contenedorActivos">
+                    <ul id="listaActivos"></ul>
+                </div>
             </section>
         </section>
     </section>

@@ -1,0 +1,101 @@
+html, body {
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+    background: url("img/Olvide mi contraseña (1).png") no-repeat center center fixed;
+    background-size: cover;
+    font-family: "Arial", sans-serif;
+    color: #fff;
+}
+
+/* Contenedor principal */
+.container {
+    width: 45%;
+    margin: 5% auto;
+    padding: 25px;
+    background: rgba(15, 23, 42, 0.9); /* Azul oscuro más sutil */
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(6px);
+    text-align: center;
+    border: 1px solid rgba(0, 128, 128, 0.4); /* Verde azulado más apagado */
+}
+
+/* Título */
+h2 {
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #1e88e5; /* Azul más oscuro */
+    text-shadow: 0px 0px 5px rgba(30, 136, 229, 0.3);
+}
+
+/* Campos de selección */
+input, select {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    background: rgba(20, 40, 60, 0.8); /* Azul oscuro sin brillo */
+    color: #e0e0e0;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+    border: 1px solid rgba(30, 136, 229, 0.3);
+}
+
+/* Cambios al pasar el mouse */
+input:hover, select:hover {
+    background: rgba(25, 50, 75, 0.85);
+}
+
+/* Enfoque más sutil */
+input:focus, select:focus {
+    border-color: rgba(30, 136, 229, 0.5);
+    box-shadow: 0px 0px 6px rgba(30, 136, 229, 0.3);
+}
+
+/* Botón */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #1e88e5, #0d47a1); /* Azul oscuro */
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 8px rgba(30, 136, 229, 0.4);
+    transition: 0.3s;
+    border: 1px solid rgba(30, 136, 229, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(90deg, #0d47a1, #1e88e5);
+    box-shadow: 0px 0px 12px rgba(30, 136, 229, 0.5);
+}
+
+/* Animaciones reducidas */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Etiquetas */
+label {
+    display: block;
+    font-size: 14px;
+    text-align: left;
+    color: #b0bec5; /* Gris azulado más elegante */
+    margin-top: 10px;
+}

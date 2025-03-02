@@ -1,35 +1,103 @@
 <?php
 session_start();
 if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'admin') {
-    header("Location: ../index.php");
+    header("Location: ../../../../index.php");
     exit();
 }
+
+// Conectar a la base de datos
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$database = 'mantenisoft';
+
+$conn = new mysqli($host, $user, $password, $database);
+if ($conn->connect_error) {
+    die("<p style='color: red;'>Error de conexión: " . $conn->connect_error . "</p>");
+}
+
+// Obtener el ID del activo desde la URL
+if (!isset($_GET['id_activo'])) {
+    die("<p style='color: red;'>Error: No se ha especificado un equipo a eliminar.</p>");
+}
+$id_activo = intval($_GET['id_activo']);
+
+// Consulta para obtener la información del equipo
+$sql = "SELECT a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area, 
+               es.procesador, es.ram, es.almacenamiento, es.sistema_operativo, es.software_instalado, es.nombre_dominio, ars.area_especifica_nombre
+        FROM activos a
+        JOIN areas ar ON a.id_area = ar.id_area
+        JOIN especificaciones es ON a.id_activo = es.id_activo
+        LEFT JOIN areas_especificas ars ON a.id_areas_especificas = ars.id_area_especifica
+        WHERE a.id_activo = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id_activo);
+$stmt->execute();
+$resultado = $stmt->get_result();
+
+// Verificar si hay resultados
+if ($resultado->num_rows == 0) {
+    die("<p style='color: red;'>No se encontró información para el equipo seleccionado.</p>");
+}
+
+$equipo = $resultado->fetch_assoc();
+
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/visualizacionp1.css">
-    <link rel="website icon" href="img/GtuzsKu2ryrS5m0Z-removebg-preview1.png">
-    <title>mantenisoft</title>
+    <link rel="stylesheet" href="css/hojadevida.css">
+    <title>Eliminar Computador</title>
 </head>
 <body>
-    <div id="hoja_de_vida">
-        <div id="fotoyperifericos">
-    <div id="foto_equipo"></div>
-    <div class="perifericos"></div>
-    <div class="perifericos"></div>
-    <div class="perifericos"></div>
-        </div>
-        <div id="detalles">
-    <div class="detalles"></div>
-    <div class="detalles"></div>
-    <div class="detalles"></div>
-    <div class="detalles"></div>
-    <div class="detalles"></div>
-    <div class="detalles"></div>
+    <div class="contenedor">
+        <div class="detalle-equipo">
+            <h2>Detalles del Computador</h2>
+            <div class="contenido">
+                <div class="info-equipo">
+                    <h3><?php echo htmlspecialchars($equipo['nombre']); ?></h3>
+                    <p><strong>Tipo:</strong> <?php echo htmlspecialchars($equipo['tipo']); ?></p>
+                    <p><strong>Estado:</strong> <?php echo htmlspecialchars($equipo['estado']); ?></p>
+                    <p><strong>Número de Placa:</strong> <?php echo htmlspecialchars($equipo['NPlaca']); ?></p>
+                    <p><strong>Área:</strong> <?php echo htmlspecialchars($equipo['nombre_area']); ?></p>
+                    <p><strong>Area Especifica:</strong> <?php echo htmlspecialchars($equipo['area_especifica_nombre']); ?></p> 
+                    <p><strong>Procesador:</strong> <?php echo htmlspecialchars($equipo['procesador']); ?></p>
+                    <p><strong>RAM:</strong> <?php echo htmlspecialchars($equipo['ram']); ?></p>
+                    <p><strong>Almacenamiento:</strong> <?php echo htmlspecialchars($equipo['almacenamiento']); ?></p>
+                    <p><strong>Sistema Operativo:</strong> <?php echo htmlspecialchars($equipo['sistema_operativo']); ?></p>
+                    <p><strong>Software Instalado:</strong> <?php echo htmlspecialchars($equipo['software_instalado']); ?></p>
+                    <p><strong>Nombre de Dominio:</strong> <?php echo htmlspecialchars($equipo['nombre_dominio']); ?></p>
+                </div>
+                <div class="imagen-container">
+                    <div class="imagen-wrapper">
+                        <img src="mostrar_imagen.php?id_activo=<?php echo $id_activo; ?>" alt="Imagen del equipo" class="imagen-equipo">
+                        <div class="overlay" onclick="document.getElementById('inputImagen').click();">Actualizar Imagen</div>
+                    </div>
+                    <form id="formActualizarImagen" action="actualizar_imagen.php" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="id_activo" value="<?php echo $id_activo; ?>">
+                        <input type="file" name="imagen" id="inputImagen" accept="image/*" style="display: none;" onchange="document.getElementById('formActualizarImagen').submit();">
+                    </form>
+                </div>
+            </div>
+            <div class="botones">
+                <form action="actualizar_computador.php" method="GET">
+                    <input type="hidden" name="id_activo" value="<?php echo $id_activo; ?>">
+                    <button type="submit" class="btn actualizar">Actualizar Datos</button>
+                </form>
+                <form action="agregar_mantenimiento.php" method="GET">
+                    <input type="hidden" name="id_activo" value="<?php echo $id_activo; ?>">
+                    <button type="submit" class="btn mantenimiento">Agregar Mantenimiento</button>
+                </form>
+            </div>
         </div>
     </div>
+    <script>
+        document.getElementById("inputImagen").addEventListener("change", function () {
+            document.getElementById("formActualizarImagen").submit();
+        });
+    </script>
 </body>
 </html>

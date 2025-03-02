@@ -82,40 +82,81 @@ h3{
     font-weight: 700;
 }
 #tablaServicios {
-    background-color:  #1c4a60;
-    margin-left: 10vh;
-    margin-top: 5vh;
-    border-radius: 50px;
-    width: 90vh;
-    height: auto; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center; 
-    padding: 2vh; 
+  background-color: #1c4a60;
+  margin-left: 10vh;
+  margin-top: 5vh;
+  border-radius: 50px;
+  width: 90vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2vh;
 }
+
+/* Título */
 #servicios {
-    margin-top: 3vh;
-    background-color: #fbfefe;
-    border-radius: 50px;
-    width: 50vh;
-    height: 7vh;
-    font-size: 5vh;
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
+  margin-top: 3vh;
+  background-color: #fbfefe;
+  border-radius: 50px;
+  width: 50vh;
+  height: 7vh;
+  font-size: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 }
+
+/* Contenedor de la lista con barra de desplazamiento */
 #serviciosRealizados {
-    background-color: #1c4a60;
-    height: 30vh;
-    width: 90vh;
-    margin-top: 3vh;
-    padding-top: 9vh;
-    border-radius: 25px;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
+  background-color: #1c4a60;
+  height: 30vh;
+  width: 80vh;
+  margin-top: 3vh;
+  border-radius: 25px;
+  padding: 2vh;
+  overflow-y: auto; /* Activa la barra de desplazamiento si hay más de 4 elementos */
+  max-height: 25vh; /* Ajusta el tamaño máximo antes de que aparezca el scroll */
 }
+
+/* Lista de activos */
+#listaActivos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* Elementos de la lista */
+#listaActivos li {
+  background: white;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  font-size: 2.5vh;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Personalización de la barra de desplazamiento en Chrome, Edge y Safari */
+#serviciosRealizados::-webkit-scrollbar {
+  width: 6px; /* Ancho de la barra */
+}
+
+#serviciosRealizados::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del deslizador */
+  border-radius: 10px;
+}
+
+#serviciosRealizados::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Color de fondo */
+}
+
+
 #logocli{
   width: 30vh;
   margin-left: 2vh;
