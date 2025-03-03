@@ -2,8 +2,9 @@ html, body {
     overflow: hidden; 
     height: 100vh; 
     margin: 0; 
-    background: url("img/Olvide mi contraseña (1).png");
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background: url("img/Olvide mi contraseña (1).png") no-repeat center center fixed;
+    background-size: cover;
 }
 
 body {
@@ -11,65 +12,137 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro translúcido */
 }
+
 .contenedor {
     width: 80%;
-    max-width: 900px;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    background: #1e293b; /* Azul oscuro elegante */
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: white;
 }
+
+/* Sección de contenido */
 .contenido {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
+
+/* Sección de la imagen */
 .imagen-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 10px;
 }
+
 .imagen-wrapper {
     position: relative;
 }
+
 .imagen-equipo {
-    width: 200px;
+    width: 100%;
+    max-width: 420px;
     height: auto;
-    border-radius: 5px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 3px solid #facc15; /* Borde dorado */
 }
+
+/* Historial de mantenimiento */
+.historial-mantenimiento {
+    max-height: 180px;
+    overflow-y: auto;
+    border-radius: 8px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 15px;
+    border-left: 3px solid #facc15; /* Línea dorada */
+}
+
+.historial-mantenimiento ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.historial-mantenimiento li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.historial-mantenimiento li:last-child {
+    border-bottom: none;
+}
+
+.fecha {
+    font-weight: bold;
+    color: #facc15; /* Dorado */
+}
+
+.usuario {
+    color: #ddd;
+}
+
+/* Botón de actualización de imagen */
 .overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     color: white;
     text-align: center;
-    padding: 5px;
+    padding: 8px;
     opacity: 0;
     transition: opacity 0.3s;
+    border-radius: 0 0 10px 10px;
 }
+
 .imagen-wrapper:hover .overlay {
     opacity: 1;
     cursor: pointer;
 }
+
+/* Botones */
 .botones {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
+
 .btn {
-    padding: 10px 15px;
+    padding: 12px 18px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
 }
-.actualizar { background: blue; color: white; }
-.mantenimiento { background: green; color: white; }
-.trasladar { background: orange; color: white; }
-.eliminar { background: red; color: white; }
+
+.actualizar {
+    background: #2563eb; /* Azul vibrante */
+    color: white;
+}
+
+.mantenimiento {
+    background: #16a34a; /* Verde elegante */
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -78,11 +151,12 @@ body {
         text-align: center;
     }
 
-    .texto, .imagen {
+    .info-equipo, .imagen-container {
         width: 100%;
     }
 
     .botones {
         flex-direction: column;
+        gap: 10px;
     }
 }
