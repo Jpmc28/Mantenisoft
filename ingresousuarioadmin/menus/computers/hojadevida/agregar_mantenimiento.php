@@ -67,12 +67,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             "verificacion_guaya" => $verificacion_guaya
         ]
     ]);
+    $estado = $_POST['estado_mantenimiento'];
 
     // Insertar en la tabla de mantenimientos
-    $sql = "INSERT INTO mantenimientos (id_activo, id_usuario, fecha_mantenimiento, descripcion, nombre_responsable, cargo_responsable, firma_tecnico) 
-            VALUES (?, ?, NOW(), ?, ?, ?, ?)";
+    $sql = "INSERT INTO mantenimientos (id_activo, id_usuario, fecha_mantenimiento, descripcion, nombre_responsable, cargo_responsable, firma_tecnico, estado) 
+            VALUES (?, ?, NOW(), ?, ?, ?, ?,?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("iissss", $id_activo, $id_usuario, $descripcion, $nombre_responsable, $cargo_responsable, $firma_tecnico);
+    $stmt->bind_param("iisssss", $id_activo, $id_usuario, $descripcion, $nombre_responsable, $cargo_responsable, $firma_tecnico, $estado);
 
     if ($stmt->execute()) {
         // Insertar en el historial
