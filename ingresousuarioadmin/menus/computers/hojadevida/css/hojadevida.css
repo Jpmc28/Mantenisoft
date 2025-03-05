@@ -1,7 +1,7 @@
 html, body {
-    overflow: hidden; 
-    height: 100vh; 
-    margin: 0; 
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
     font-family: 'Poppins', sans-serif;
     background: url("img/Olvide mi contraseña (1).png") no-repeat center center fixed;
     background-size: cover;
@@ -12,20 +12,19 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro translúcido */
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .contenedor {
-    width: 80%;
-    max-width: 1000px;
-    background: #1e293b; /* Azul oscuro elegante */
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 80vw;
+    max-width: 100vw;
+    background: #1e293b;
+    padding: 3vh;
+    border-radius: 1.5vh;
+    box-shadow: 0 0.5vh 2vh rgba(0, 0, 0, 0.2);
     color: white;
 }
 
-/* Sección de contenido */
 .contenido {
     display: flex;
     justify-content: space-between;
@@ -33,12 +32,11 @@ body {
     flex-wrap: wrap;
 }
 
-/* Sección de la imagen */
 .imagen-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 1vh;
 }
 
 .imagen-wrapper {
@@ -47,22 +45,21 @@ body {
 
 .imagen-equipo {
     width: 100%;
-    max-width: 420px;
+    max-width: 50vw;
     height: auto;
-    border-radius: 10px;
+    border-radius: 1.5vh;
     object-fit: cover;
-    border: 3px solid #facc15; /* Borde dorado */
+    border: 0.5vh solid #facc15;
 }
 
-/* Historial de mantenimiento */
 .historial-mantenimiento {
-    max-height: 180px;
+    max-height: 25vh;
     overflow-y: auto;
-    border-radius: 8px;
-    padding: 12px;
+    border-radius: 1vh;
+    padding: 1.5vh;
     background: rgba(255, 255, 255, 0.1);
-    margin-top: 15px;
-    border-left: 3px solid #facc15; /* Línea dorada */
+    margin-top: 2vh;
+    border-left: 0.5vh solid #facc15;
 }
 
 .historial-mantenimiento ul {
@@ -71,11 +68,15 @@ body {
     margin: 0;
 }
 
+/* Asegurar alineación en la misma línea */
 .historial-mantenimiento li {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5vh;
+    border-bottom: 0.2vh solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+    gap: 1vh; /* Espacio entre elementos */
 }
 
 .historial-mantenimiento li:last-child {
@@ -84,14 +85,42 @@ body {
 
 .fecha {
     font-weight: bold;
-    color: #facc15; /* Dorado */
+    color: #facc15;
 }
 
 .usuario {
     color: #ddd;
 }
 
-/* Botón de actualización de imagen */
+.estado {
+    margin-left: 1vh;
+    font-size: 1.8vh;
+}
+
+/* Asegurar que el botón "Retomar" se vea bien en la misma línea */
+.retomar-form {
+    display: inline-block;
+    margin-left: 1vh;
+}
+
+.retomar-btn {
+    background: #facc15; /* Amarillo dorado */
+    color: #1e293b; /* Azul oscuro */
+    border: none;
+    padding: 1vh 2vh;
+    border-radius: 1vh;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.retomar-btn:hover {
+    background: #eab308;
+    transform: translateY(-0.5vh);
+}
+
+/* Overlay en imagen */
 .overlay {
     position: absolute;
     bottom: 0;
@@ -100,10 +129,10 @@ body {
     background: rgba(0, 0, 0, 0.6);
     color: white;
     text-align: center;
-    padding: 8px;
+    padding: 1vh;
     opacity: 0;
     transition: opacity 0.3s;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 1.5vh 1.5vh;
 }
 
 .imagen-wrapper:hover .overlay {
@@ -111,40 +140,39 @@ body {
     cursor: pointer;
 }
 
-/* Botones */
 .botones {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 3vh;
 }
 
 .btn {
-    padding: 12px 18px;
+    padding: 1.8vh 2.5vw;
     border: none;
-    border-radius: 8px;
+    border-radius: 1vh;
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.2vh;
     transition: 0.3s;
 }
 
 .actualizar {
-    background: #2563eb; /* Azul vibrante */
+    background: #2563eb;
     color: white;
 }
 
 .mantenimiento {
-    background: #16a34a; /* Verde elegante */
+    background: #16a34a;
     color: white;
 }
 
 .btn:hover {
     opacity: 0.85;
-    transform: translateY(-2px);
+    transform: translateY(-0.5vh);
 }
 
-/* Responsive */
+/* Responsivo */
 @media (max-width: 768px) {
     .contenido {
         flex-direction: column;
@@ -157,6 +185,15 @@ body {
 
     .botones {
         flex-direction: column;
-        gap: 10px;
+        gap: 2vh;
+    }
+
+    .historial-mantenimiento li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .retomar-form {
+        margin-top: 1vh;
     }
 }

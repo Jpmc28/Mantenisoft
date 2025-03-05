@@ -47,11 +47,12 @@ if ($resultado->num_rows == 0) {
 $equipo = $resultado->fetch_assoc();
 
 // Consulta para obtener los mantenimientos del equipo
-$sql_mantenimientos = "SELECT m.fecha_mantenimiento, u.nombre AS nombre_usuario
-                       FROM mantenimientos m
-                       JOIN usuarios u ON m.id_usuario = u.id_usuario
-                       WHERE m.id_activo = ?
-                       ORDER BY m.fecha_mantenimiento DESC";
+$sql_mantenimientos = "SELECT m.id_mantenimiento, m.fecha_mantenimiento, u.nombre AS nombre_usuario, m.estado
+                        FROM mantenimientos m
+                        JOIN usuarios u ON m.id_usuario = u.id_usuario
+                        WHERE m.id_activo = ?
+                        ORDER BY m.fecha_mantenimiento DESC;";
+
 
 $stmt_mantenimientos = $conn->prepare($sql_mantenimientos);
 $stmt_mantenimientos->bind_param("i", $id_activo);
@@ -109,21 +110,28 @@ while ($fila = $resultado_mantenimientos->fetch_assoc()) {
 
         <!-- Sección de Mantenimientos -->
         <h3>Historial de Mantenimientos</h3>
-        <div class="historial-mantenimiento">
-            <?php if (!empty($mantenimientos)): ?>
-                <ul>
-                    <?php foreach ($mantenimientos as $mantenimiento): ?>
-                        <li>
-                            <span class="fecha"><?php echo htmlspecialchars($mantenimiento['fecha_mantenimiento']); ?></span>
-                            <span class="usuario"><?php echo htmlspecialchars($mantenimiento['nombre_usuario']); ?></span>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else: ?>
-                <p>No hay mantenimientos registrados para este equipo.</p>
-            <?php endif; ?>
-        </div>
-
+            <div class="historial-mantenimiento">
+                <?php if (!empty($mantenimientos)): ?>
+                    <ul>
+                        <?php foreach ($mantenimientos as $mantenimiento): ?>
+                            <li>
+                                <span class="fecha"><?php echo htmlspecialchars($mantenimiento['fecha_mantenimiento']); ?></span>
+                                <span class="usuario"><?php echo htmlspecialchars($mantenimiento['nombre_usuario']); ?></span>
+                                <span class="estado">(<?php echo htmlspecialchars($mantenimiento['estado']); ?>)</span>
+                                
+                                <?php if ($mantenimiento['estado'] === 'En Proceso'): ?>
+                                    <form action="agregar_mantenimiento.php" method="GET" class="retomar-form">
+                                        <input type="hidden" name="id_mantenimiento" value="<?php echo $mantenimiento['id_mantenimiento']; ?>">
+                                        <button type="submit" class="retomar-btn">Retomar</button>
+                                    </form>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p>No hay mantenimientos registrados para este equipo.</p>
+                <?php endif; ?>
+            </div>
         <!-- Botones -->
         <div class="botones">
             <form action="actualizar_computador.php" method="GET">

@@ -144,18 +144,23 @@ $conn->close();
         <button type="button" id="limpiarFirma">Borrar Firma</button>
         <input type="hidden" name="firma" id="firmaInput">
 
-        <button type="submit">Guardar Mantenimiento</button>
+        <!-- Campo oculto para el estado -->
+        <input type="hidden" name="estado_mantenimiento" id="estado_mantenimiento" value="Completado">
+
+        <!-- Botones -->
+        <button type="submit" id="guardarMantenimiento">Cerrar Mantenimiento</button>
+        <button type="submit" id="dejarEnProceso">Dejar en Proceso</button>
     </div>
 </form>
 
-
 <script>
+    // Manejo de la firma digital
     const canvas = document.getElementById('firmaCanvas');
     const ctx = canvas.getContext('2d');
     const firmaInput = document.getElementById('firmaInput');
     const limpiarFirma = document.getElementById('limpiarFirma');
     
-    canvas.width = 400; // Ajusta el tamaño del canvas
+    canvas.width = 400;
     canvas.height = 200;
     let dibujando = false;
 
@@ -177,18 +182,27 @@ $conn->close();
     }
 
     function actualizarFirma() {
-        firmaInput.value = canvas.toDataURL(); // Guarda la firma en formato base64
+        firmaInput.value = canvas.toDataURL();
     }
 
     function limpiarCanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        firmaInput.value = ''; // Limpia el campo oculto
+        firmaInput.value = '';
     }
 
     canvas.addEventListener('mousedown', comenzarDibujo);
     canvas.addEventListener('mousemove', dibujar);
     canvas.addEventListener('mouseup', finalizarDibujo);
     limpiarFirma.addEventListener('click', limpiarCanvas);
+
+    // Manejo del estado de mantenimiento
+    document.getElementById('dejarEnProceso').addEventListener('click', function () {
+        document.getElementById('estado_mantenimiento').value = 'En Proceso';
+    });
+
+    document.getElementById('guardarMantenimiento').addEventListener('click', function () {
+        document.getElementById('estado_mantenimiento').value = 'Completado';
+    });
 </script>
 
 </body>
