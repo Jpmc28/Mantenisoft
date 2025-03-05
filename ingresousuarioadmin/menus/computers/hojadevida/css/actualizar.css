@@ -1,0 +1,81 @@
+html, body {
+    overflow: hidden; 
+    height: 100vh; 
+    margin: 0; 
+    font-family: 'Poppins', sans-serif;
+    background: url("img/Olvide mi contraseña (1).png") no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.container {
+    background: rgba(30, 41, 59, 0.9); /* Azul oscuro translúcido */
+    padding: 2.5vh;
+    border-radius: 1.5vh;
+    box-shadow: 0 0.5vh 1.5vh rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 90vw;
+    max-width: 45vw;
+    max-height: 80vh;
+}
+
+h2 {
+    margin-bottom: 2vh;
+    font-size: 3vh;
+    color: #facc15; /* Dorado */
+}
+
+label {
+    display: block;
+    margin: 1.2vh 0 0.8vh;
+    font-weight: bold;
+    text-align: left;
+    font-size: 1.8vh;
+}
+
+input {
+    width: calc(100% - 2vh); /* Deja margen a los lados */
+    padding: 1.5vh;
+    border-radius: 1vh;
+    border: none;
+    margin-bottom: 2vh;
+    font-size: 1.8vh;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    outline: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+button {
+    width: 100%;
+    background: #3b82f6; /* Azul vibrante */
+    border: none;
+    padding: 1.8vh;
+    border-radius: 1vh;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 2vh;
+}
+
+button:hover {
+    background: #2563eb;
+    transform: scale(1.05);
+}
+
+#status {
+    margin-top: 2vh;
+    font-weight: bold;
+    color: #facc15; /* Dorado */
+}
