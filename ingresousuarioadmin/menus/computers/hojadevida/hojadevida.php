@@ -120,7 +120,7 @@ while ($fila = $resultado_mantenimientos->fetch_assoc()) {
                                 <span class="estado">(<?php echo htmlspecialchars($mantenimiento['estado']); ?>)</span>
                                 
                                 <?php if ($mantenimiento['estado'] === 'En Proceso'): ?>
-                                    <form action="agregar_mantenimiento.php" method="GET" class="retomar-form">
+                                    <form action="retomar_mantenimiento.php" method="GET" class="retomar-form">
                                         <input type="hidden" name="id_mantenimiento" value="<?php echo $mantenimiento['id_mantenimiento']; ?>">
                                         <button type="submit" class="retomar-btn">Retomar</button>
                                     </form>
