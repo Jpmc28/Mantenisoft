@@ -87,7 +87,7 @@ h3{
     margin-top: 5vh;
     border-radius: 50px;
     width: 90vh;
-    height: auto; 
+    height: 52vh; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
@@ -189,6 +189,75 @@ h3{
     opacity: 1;
     visibility: visible;
   }
+  .historial-mantenimiento {
+    max-height: 900vh;
+    height: 900vh;
+    width: 80vh;
+    overflow-y: 200vh;
+    border-radius: 1vh;
+    padding: 1.5vh;
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 2vh;
+    border-left: 0.5vh solid #facc15;
+}
+
+.historial-mantenimiento ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Asegurar alineación en la misma línea */
+.historial-mantenimiento li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5vh;
+    border-bottom: 0.2vh solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+    gap: 1vh; /* Espacio entre elementos */
+}
+
+.historial-mantenimiento li:last-child {
+    border-bottom: none;
+}
+
+.fecha {
+    font-weight: bold;
+    color: #facc15;
+}
+
+.usuario {
+    color: #ddd;
+}
+
+.estado {
+    margin-left: 1vh;
+    font-size: 1.8vh;
+}
+
+/* Asegurar que el botón "Retomar" se vea bien en la misma línea */
+.retomar-form {
+    display: inline-block;
+    margin-left: 1vh;
+}
+
+.retomar-btn {
+    background: #facc15; /* Amarillo dorado */
+    color: #1e293b; /* Azul oscuro */
+    border: none;
+    padding: 1vh 2vh;
+    border-radius: 1vh;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.retomar-btn:hover {
+    background: #eab308;
+    transform: translateY(-0.5vh);
+}
   @media (max-width: 1920px) {
     html, body {
         background: url("img/Olvide\ mi\ contraseña\ \(2\).png");

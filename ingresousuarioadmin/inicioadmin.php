@@ -4,6 +4,43 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'admin') {
     header("Location: ../index.php");
     exit();
 }
+
+// Conectar a la base de datos
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$database = 'mantenisoft';
+
+$conn = new mysqli($host, $user, $password, $database);
+if ($conn->connect_error) {
+    die("<p style='color: red;'>Error de conexión: " . $conn->connect_error . "</p>");
+}
+
+if (!empty($_GET['id_activo'])) {
+  $_SESSION['id_activo'] = intval($_GET['id_activo']);
+}
+
+$id_usuario = $_SESSION['id_usuario'];
+
+// Consulta para obtener los mantenimientos del equipo
+$sql_mantenimientos = "SELECT m.id_mantenimiento, m.fecha_mantenimiento, u.nombre AS nombre_usuario, m.estado
+                        FROM mantenimientos m
+                        JOIN usuarios u ON m.id_usuario = u.id_usuario
+                        WHERE m.id_usuario = ?
+                        ORDER BY m.fecha_mantenimiento DESC;";
+
+
+$stmt_mantenimientos = $conn->prepare($sql_mantenimientos);
+$stmt_mantenimientos->bind_param("i", $id_usuario);
+$stmt_mantenimientos->execute();
+$resultado_mantenimientos = $stmt_mantenimientos->get_result();
+
+// Guardar los mantenimientos en un array
+$mantenimientos = [];
+while ($fila = $resultado_mantenimientos->fetch_assoc()) {
+    $mantenimientos[] = $fila;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +65,28 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'admin') {
         </section>
         <section id="tablaServicios">
             <section id="servicios"><p>Servicios Realizados</p></section>
+            <div class="historial-mantenimiento">
+                <?php if (!empty($mantenimientos)): ?>
+                    <ul>
+                        <?php foreach ($mantenimientos as $mantenimiento): ?>
+                            <li>
+                                <span class="fecha"><?php echo htmlspecialchars($mantenimiento['fecha_mantenimiento']); ?></span>
+                                <span class="usuario"><?php echo htmlspecialchars($mantenimiento['nombre_usuario']); ?></span>
+                                <span class="estado">(<?php echo htmlspecialchars($mantenimiento['estado']); ?>)</span>
+                                
+                                <?php if ($mantenimiento['estado'] === 'En Proceso'): ?>
+                                    <form action="retomar_mantenimiento.php" method="GET" class="retomar-form">
+                                        <input type="hidden" name="id_mantenimiento" value="<?php echo $mantenimiento['id_mantenimiento']; ?>">
+                                        <button type="submit" class="retomar-btn">Retomar</button>
+                                    </form>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else: ?>
+                    <p>No hay mantenimientos registrados para este equipo.</p>
+                <?php endif; ?>
+            </div>
             <section id="serviciosRealizados">
             </section>
         </section>
