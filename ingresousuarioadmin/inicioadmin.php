@@ -85,7 +85,7 @@ while ($fila = $resultado_mantenimientos->fetch_assoc()) {
                         <?php endforeach; ?>
                     </ul>
                 <?php else: ?>
-                    <p>No hay mantenimientos registrados para este equipo.</p>
+                    <p>No hay mantenimientos registrados para este usuario.</p>
                 <?php endif; ?>
             </div>
         </section>
