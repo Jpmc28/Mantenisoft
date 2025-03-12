@@ -2,7 +2,7 @@
 session_start();
 
 // Verificar si el usuario está autenticado y es admin
-if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'admin') {
+if (!isset($_SESSION['id_usuario'])) {
     header("Location: ../index.php");
     exit();
 }

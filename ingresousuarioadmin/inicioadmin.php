@@ -23,9 +23,10 @@ if (!empty($_GET['id_activo'])) {
 $id_usuario = $_SESSION['id_usuario'];
 
 // Consulta para obtener los mantenimientos del equipo
-$sql_mantenimientos = "SELECT m.id_mantenimiento, m.fecha_mantenimiento, u.nombre AS nombre_usuario, m.estado
+$sql_mantenimientos = "SELECT m.id_mantenimiento, m.fecha_mantenimiento, u.nombre AS nombre_usuario, m.estado, esp.nombre_dominio
                         FROM mantenimientos m
                         JOIN usuarios u ON m.id_usuario = u.id_usuario
+                        JOIN especificaciones esp ON m.id_activo = esp.id_activo
                         WHERE m.id_usuario = ?
                         ORDER BY m.fecha_mantenimiento DESC;";
 
@@ -71,7 +72,7 @@ while ($fila = $resultado_mantenimientos->fetch_assoc()) {
                         <?php foreach ($mantenimientos as $mantenimiento): ?>
                             <li>
                                 <span class="fecha"><?php echo htmlspecialchars($mantenimiento['fecha_mantenimiento']); ?></span>
-                                <span class="usuario"><?php echo htmlspecialchars($mantenimiento['nombre_usuario']); ?></span>
+                                <span class="usuario"><?php echo htmlspecialchars($mantenimiento['nombre_dominio']); ?></span>
                                 <span class="estado">(<?php echo htmlspecialchars($mantenimiento['estado']); ?>)</span>
                                 
                                 <?php if ($mantenimiento['estado'] === 'En Proceso'): ?>
@@ -87,8 +88,6 @@ while ($fila = $resultado_mantenimientos->fetch_assoc()) {
                     <p>No hay mantenimientos registrados para este equipo.</p>
                 <?php endif; ?>
             </div>
-            <section id="serviciosRealizados">
-            </section>
         </section>
     </section>
     <div class="menu-container">
