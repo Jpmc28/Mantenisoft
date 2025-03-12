@@ -17,12 +17,14 @@ body {
 
 .contenedor {
     width: 80vw;
-    max-width: 100vw;
+    max-width: 90vh;
+    height: 90vh;
     background: #1e293b;
     padding: 3vh;
     border-radius: 1.5vh;
     box-shadow: 0 0.5vh 2vh rgba(0, 0, 0, 0.2);
     color: white;
+    overflow: hidden;
 }
 
 .contenido {
@@ -39,13 +41,9 @@ body {
     margin-top: 1vh;
 }
 
-.imagen-wrapper {
-    position: relative;
-}
-
 .imagen-equipo {
-    width: 100%;
-    max-width: 50vw;
+    width: 80vh;
+    max-width: 40vh;
     height: auto;
     border-radius: 1.5vh;
     object-fit: cover;
@@ -53,91 +51,79 @@ body {
 }
 
 .historial-mantenimiento {
-    max-height: 25vh;
-    overflow-y: auto;
+    max-height: 15vh;
+    overflow-y: auto; /* Mantiene la barra de desplazamiento */
     border-radius: 1vh;
     padding: 1.5vh;
     background: rgba(255, 255, 255, 0.1);
     margin-top: 2vh;
     border-left: 0.5vh solid #facc15;
+    scrollbar-width: thin; /* Hace la barra más delgada */
+    scrollbar-color: #facc15 rgba(255, 255, 255, 0.1); /* Color personalizado */
 }
 
+/* Asegurar alineación */
 .historial-mantenimiento ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Asegurar alineación en la misma línea */
 .historial-mantenimiento li {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1.5vh;
     border-bottom: 0.2vh solid rgba(255, 255, 255, 0.2);
+    flex-wrap: nowrap; /* Evita que los elementos se acomoden en múltiples líneas */
+    gap: 1vh;
+}
+
+/* Mantener la información alineada */
+.historial-mantenimiento li .detalle {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    flex-grow: 1;
     flex-wrap: wrap;
-    gap: 1vh; /* Espacio entre elementos */
 }
 
-.historial-mantenimiento li:last-child {
-    border-bottom: none;
-}
-
-.fecha {
-    font-weight: bold;
-    color: #facc15;
-}
-
-.usuario {
-    color: #ddd;
-}
-
-.estado {
-    margin-left: 1vh;
-    font-size: 1.8vh;
-}
-
-/* Asegurar que el botón "Retomar" se vea bien en la misma línea */
+/* Asegurar que el botón "Retomar" se mantenga alineado */
 .retomar-form {
-    display: inline-block;
-    margin-left: 1vh;
+    margin-left: auto;
 }
 
 .retomar-btn {
-    background: #facc15; /* Amarillo dorado */
-    color: #1e293b; /* Azul oscuro */
+    background: #facc15;
+    color: #1e293b;
     border: none;
     padding: 1vh 2vh;
     border-radius: 1vh;
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
-    transition: 0.3s;
+    transition: transform 0.3s ease, background 0.3s ease;
+    white-space: nowrap;
 }
 
+/* Restaurar el efecto hover en el botón */
 .retomar-btn:hover {
     background: #eab308;
     transform: translateY(-0.5vh);
 }
 
-/* Overlay en imagen */
-.overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    text-align: center;
-    padding: 1vh;
-    opacity: 0;
-    transition: opacity 0.3s;
-    border-radius: 0 0 1.5vh 1.5vh;
+/* Mantener la barra de desplazamiento en navegadores Webkit */
+.historial-mantenimiento::-webkit-scrollbar {
+    width: 0.7vh;
 }
 
-.imagen-wrapper:hover .overlay {
-    opacity: 1;
-    cursor: pointer;
+.historial-mantenimiento::-webkit-scrollbar-thumb {
+    background: #facc15;
+    border-radius: 1vh;
+}
+
+.historial-mantenimiento::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .botones {
@@ -147,7 +133,7 @@ body {
 }
 
 .btn {
-    padding: 1.8vh 2.5vw;
+    padding: 1.8vh 4vh;
     border: none;
     border-radius: 1vh;
     cursor: pointer;
@@ -172,28 +158,13 @@ body {
     transform: translateY(-0.5vh);
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
     .contenido {
         flex-direction: column;
         text-align: center;
     }
 
-    .info-equipo, .imagen-container {
-        width: 100%;
-    }
-
-    .botones {
-        flex-direction: column;
-        gap: 2vh;
-    }
-
-    .historial-mantenimiento li {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .retomar-form {
-        margin-top: 1vh;
+    .imagen-equipo {
+        max-width: 50vh;
     }
 }
