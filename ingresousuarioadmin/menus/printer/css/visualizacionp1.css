@@ -1,23 +1,69 @@
 html, body {
-    overflow: hidden;
-    height: 100vh;
-    margin: 0;
-    background: url("img/Olvide\ mi\ contraseña\ \(1\).png");
+    overflow: hidden; 
+    height: 100vh; 
+    margin: 0; 
+    background: url("img/Olvide mi contraseña (1).png");
     background-size: cover; /* Hace que la imagen cubra toda la pantalla */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
+    display: flex-end;
     font-weight: bold;
     font-style: unset;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    align-content: center;
+    font-family: Arial, sans-serif;
 }
+/* Contenedor principal */
+/* Contenedor principal */
+.contenedor {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #3F6B80;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Título */
+h1 {
+    color: white;
+    font-size: 24px;
+}
+
+/* Contenedor de los equipos */
+.activos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Máximo 4 equipos por fila */
+    gap: 20px;
+    max-height: 300px; /* Ajusta esto según necesites */
+    overflow-y: auto; /* Agrega barra de desplazamiento vertical si hay más de 16 */
+    padding: 10px;
+}
+
+/* Tarjetas de cada equipo */
+.activo {
+    background-color: #A7DAE8;
+    padding: 15px;
+    border-radius: 20px;
+    width: 180px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.activo:hover {
+    background-color: #89C2D9;
+}
+
+
 @media (max-width: 1920px) {
-    html, body {
-        background: url("img/Olvide\ mi\ contraseña\ \(2\).png");
-        background-size: cover; /* Hace que la imagen cubra toda la pantalla */
-        background-position: center; /* Centra la imagen */
-        background-repeat: no-repeat; /* Evita que la imagen se repita */
-    }
+  html, body {
+      background: url("img/Olvide\ mi\ contraseña\ \(2\).png");
+      background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+      background-position: center; /* Centra la imagen */
+      background-repeat: no-repeat; /* Evita que la imagen se repita */
   }
+}
