@@ -77,7 +77,7 @@ if (!$activo) {
         </select>
 
         <button type="submit">Actualizar Área</button>
-        <a href="../../inicioactivos.php" class="back-button">Volver al menú</a>
+        <a href="../../../../inicioactivos.php" class="back-button">Volver al menú</a>
     </form>
 </div>
 

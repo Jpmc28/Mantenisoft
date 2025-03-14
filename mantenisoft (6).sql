@@ -463,13 +463,6 @@ ALTER TABLE `perifericos`
 ALTER TABLE `pisos`
   ADD PRIMARY KEY (`id_piso`);
 
---
--- Indices de la tabla `reparaciones_timbres`
---
-ALTER TABLE `reparaciones_timbres`
-  ADD PRIMARY KEY (`id_reparacion`),
-  ADD KEY `id_activo` (`id_activo`),
-  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -477,10 +470,6 @@ ALTER TABLE `reparaciones_timbres`
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `correo` (`correo`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
 
 --
 -- AUTO_INCREMENT de la tabla `activos`
@@ -610,13 +599,6 @@ ALTER TABLE `mantenimientos_telefonos`
 --
 ALTER TABLE `perifericos`
   ADD CONSTRAINT `perifericos_ibfk_1` FOREIGN KEY (`id_activo`) REFERENCES `activos` (`id_activo`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `reparaciones_timbres`
---
-ALTER TABLE `reparaciones_timbres`
-  ADD CONSTRAINT `reparaciones_timbres_ibfk_1` FOREIGN KEY (`id_activo`) REFERENCES `activos` (`id_activo`) ON DELETE CASCADE,
-  ADD CONSTRAINT `reparaciones_timbres_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
 
 DELIMITER $$
 --
