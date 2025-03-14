@@ -10,7 +10,7 @@ if (!isset($_SESSION['id_usuario'])) {
 // Conexión a la base de datos
 $host = 'localhost'; 
 $user = 'root';      
-$password = '';      
+$password = 'root';      
 $database = 'mantenisoft'; 
 
 $conn = new mysqli($host, $user, $password, $database);

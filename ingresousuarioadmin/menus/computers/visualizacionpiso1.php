@@ -45,12 +45,13 @@ if (!$piso_id) {
 }
 
 // Preparar la consulta
-$sql = "SELECT a.id_activo, a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area, es.nombre_dominio
+$sql = "SELECT a.id_activo, a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area, 
+               COALESCE(es.nombre_dominio, a.NPlaca) AS identificador
         FROM activos a
         JOIN areas ar ON a.id_area = ar.id_area
         JOIN pisos p ON ar.id_piso = p.id_piso
-        JOIN especificaciones es ON a.id_activo = es.id_activo
-        WHERE p.id_piso = ? and a.tipo = 'computador' or p.id_piso = ? and a.tipo = 'portatil';";
+        LEFT JOIN especificaciones es ON a.id_activo = es.id_activo
+        WHERE (p.id_piso = ? AND a.tipo = 'computador') OR (p.id_piso = ? AND a.tipo = 'portatil');";
 
 $stmt = $conn->prepare($sql);
 if (!$stmt) {
@@ -67,7 +68,9 @@ if ($resultado->num_rows > 0) {
     echo "<div class='activos'>"; // Contenedor con Grid
     
     while ($fila = $resultado->fetch_assoc()) {
-        echo "<a href='hojadevida/hojadevida.php?id_activo=" . $fila['id_activo'] . "'><div class='activo'>" . $fila['nombre_dominio'] . "</div></a>";
+        echo "<a href='hojadevida/hojadevida.php?id_activo=" . $fila['id_activo'] . "'>
+                <div class='activo'>" . htmlspecialchars($fila['identificador']) . "</div>
+              </a>";
     }
     
     echo "</div>"; // Cierre de .activos
@@ -77,7 +80,7 @@ if ($resultado->num_rows > 0) {
     echo "<div class='contenedor'>";
     echo "<h1>¿Qué equipo quieres ver?</h1>";
     echo "<div class='activos'>";
-        echo "<div class='activo'style='color: red;'>No hay activos registrados en este piso.</div>";
+        echo "<div class='activo' style='color: red;'>No hay activos registrados en este piso.</div>";
     echo "</div>";
     echo "</div>";
 }
@@ -87,6 +90,7 @@ $stmt->close();
 $conn->close();
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

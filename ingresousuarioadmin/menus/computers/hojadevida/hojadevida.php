@@ -31,7 +31,7 @@ $sql = "SELECT a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area,
                ars.area_especifica_nombre
         FROM activos a
         JOIN areas ar ON a.id_area = ar.id_area
-        JOIN especificaciones es ON a.id_activo = es.id_activo
+        LEFT JOIN especificaciones es ON a.id_activo = es.id_activo
         LEFT JOIN areas_especificas ars ON a.id_areas_especificas = ars.id_area_especifica
         WHERE a.id_activo = ?";
 
