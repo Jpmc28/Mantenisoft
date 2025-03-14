@@ -15,43 +15,71 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_activo = $_POST['id_activo'];
-    $ram = $_POST['ram'];
-    $almacenamiento = $_POST['almacenamiento'];
-    $sistema_operativo = $_POST['sistema_operativo'];
-    $nombre_dominio = $_POST['nombre_dominio'];
-    $procesador = $_POST['procesador'];
-    $software_instalado = $_POST['software_instalado'];
+    $id_activo = $_POST['id_activo'] ?? null;
+    $ram = $_POST['ram'] ?? null;
+    $almacenamiento = $_POST['almacenamiento'] ?? null;
+    $sistema_operativo = $_POST['sistema_operativo'] ?? null;
+    $nombre_dominio = $_POST['nombre_dominio'] ?? null;
+    $procesador = $_POST['procesador'] ?? null;
+    $software_instalado = $_POST['software_instalado'] ?? null;
     $id_usuario = $_SESSION['id_usuario']; // ID del usuario logueado
 
-    if (empty($id_activo)) {
-        die("Error: No se recibió el ID del activo.");
+    if (empty($id_activo) || !is_numeric($id_activo)) {
+        die("Error: ID de activo inválido o no recibido.");
     }
 
-    // Actualización de datos
-    $sql = "UPDATE especificaciones 
-            SET ram = ?, almacenamiento = ?, sistema_operativo = ?, nombre_dominio = ?, procesador = ?, software_instalado = ? 
-            WHERE id_activo = ?";
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssi", $ram, $almacenamiento, $sistema_operativo, $nombre_dominio, $procesador, $software_instalado, $id_activo);
-    
+    // Verificar si ya existen datos en especificaciones
+    $sql_check = "SELECT * FROM especificaciones WHERE id_activo = ?";
+    $stmt_check = $conn->prepare($sql_check);
+    $stmt_check->bind_param("i", $id_activo);
+    $stmt_check->execute();
+    $result_check = $stmt_check->get_result();
+    $row = $result_check->fetch_assoc();
+    $stmt_check->close();
+
+    if ($row) {
+        // Si existen datos, usar los valores actuales si el usuario no los modifica
+        $ram = !empty($ram) ? $ram : $row['ram'];
+        $almacenamiento = !empty($almacenamiento) ? $almacenamiento : $row['almacenamiento'];
+        $sistema_operativo = !empty($sistema_operativo) ? $sistema_operativo : $row['sistema_operativo'];
+        $nombre_dominio = !empty($nombre_dominio) ? $nombre_dominio : $row['nombre_dominio'];
+        $procesador = !empty($procesador) ? $procesador : $row['procesador'];
+        $software_instalado = !empty($software_instalado) ? $software_instalado : $row['software_instalado'];
+
+        // Actualizar los datos
+        $sql = "UPDATE especificaciones 
+                SET ram = ?, almacenamiento = ?, sistema_operativo = ?, nombre_dominio = ?, procesador = ?, software_instalado = ? 
+                WHERE id_activo = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssssi", $ram, $almacenamiento, $sistema_operativo, $nombre_dominio, $procesador, $software_instalado, $id_activo);
+        $accion = "Actualización de especificaciones del activo $id_activo.";
+    } else {
+        // Si no existen datos, hacer INSERT
+        $sql = "INSERT INTO especificaciones (id_activo, ram, almacenamiento, sistema_operativo, nombre_dominio, procesador, software_instalado) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("issssss", $id_activo, $ram, $almacenamiento, $sistema_operativo, $nombre_dominio, $procesador, $software_instalado);
+        $accion = "Registro de nuevas especificaciones para el activo $id_activo.";
+    }
+
+    // Ejecutar la consulta de inserción/actualización
     if ($stmt->execute()) {
-        // Registrar la actualización en el historial
-        $accion = "Actualización de activo con id $id_activo: RAM: $ram GB, Almacenamiento: $almacenamiento GB, SO: $sistema_operativo, Dominio: $nombre_dominio, Procesador: $procesador, Software Especial: $software_instalado";
-        $sql_historial = "INSERT INTO historial (id_usuario, accion) VALUES (?, ?)";
+        // Registrar la acción en el historial
+        $sql_historial = "INSERT INTO historial (id_usuario, accion, detalles) VALUES (?, ?, ?)";
         $stmt_historial = $conn->prepare($sql_historial);
-        $stmt_historial->bind_param("is", $id_usuario, $accion);
+        $detalles = "RAM: $ram GB, Almacenamiento: $almacenamiento GB, SO: $sistema_operativo, Dominio: $nombre_dominio, Procesador: $procesador, Software: $software_instalado";
+        $stmt_historial->bind_param("iss", $id_usuario, $accion, $detalles);
         $stmt_historial->execute();
         $stmt_historial->close();
-        
+
         $stmt->close();
         $conn->close();
         
-        header("Location: hojadevida.php?id_activo=" . $id_activo);
+        // Redirigir con éxito
+        header("Location: hojadevida.php?id_activo=" . $id_activo . "&success=1");
         exit();
     } else {
-        echo json_encode(["status" => "error", "message" => "Error al actualizar los datos"]);
+        die("Error al ejecutar la consulta: " . $stmt->error);
     }
 }
 ?>
