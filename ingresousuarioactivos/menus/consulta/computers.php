@@ -40,7 +40,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
                 <a href="computers/visualizacionpiso1.php?piso=dies"><div class="piso"><h1>Piso 10</h1></div></a>
             </div>
         </div>
-        <a href="../../../inicioactivos.php"><img src="img/home-removebg-preview.png" alt="" id="imgicon"></a>
+        <a href="../../inicioactivos.php"><img src="img/home-removebg-preview.png" alt="" id="imgicon"></a>
     </div>
 </body>
 </html>

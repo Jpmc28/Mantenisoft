@@ -60,7 +60,7 @@ if ($resultado->num_rows > 0) {
     echo "<div class='activos'>"; // Contenedor con Grid
     
     while ($fila = $resultado->fetch_assoc()) {
-        echo "<div class='activo'>{$fila['nombre']}</div>";
+        echo "<a href='eliminar_activo/elimarcomputador.php?id_activo=" . $fila['id_activo'] . "'><div class='activo'>" . $fila['NPlaca'] . "</div></a>";
     }
     
     echo "</div>"; // Cierre de .activos

@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_activo"])) {
     $id_activo = intval($_POST["id_activo"]); // Convertir el ID a entero para evitar inyecciones SQL
 
     // Conexión a la base de datos
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($host, $user, $password, $database);
 
     // Verificar conexión
     if ($conn->connect_error) {
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["id_activo"])) {
 
     if ($stmt->execute()) {
         echo "El activo ha sido marcado como 'dado de baja'.";
-        header("Location: ../../../../../inicioactivos.php"); // Redirigir a la lista de activos (ajusta según tu estructura)
+        header("Location: ../../../../inicioactivos.php"); // Redirigir a la lista de activos (ajusta según tu estructura)
         exit();
     } else {
         echo "Error al actualizar el activo: " . $conn->error;
