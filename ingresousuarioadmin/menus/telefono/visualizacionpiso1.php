@@ -49,7 +49,7 @@ $sql = "SELECT a.id_activo, a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area
         FROM activos a
         JOIN areas ar ON a.id_area = ar.id_area
         JOIN pisos p ON ar.id_piso = p.id_piso
-        JOIN especificaciones es ON a.id_activo = es.id_activo
+        LEFT JOIN especificaciones es ON a.id_activo = es.id_activo
         WHERE p.id_piso = ? and a.tipo = 'telefono';";
 
 $stmt = $conn->prepare($sql);
