@@ -28,8 +28,15 @@
                 <br>
                 <a href="#" id="OMC">Olvide mi contraseña</a>
                 <br>
-                <a href="#">Registrarme</a>
+                <a href="phpbacklogeoandresgister/registrarse.php">Registrarme</a>
         </section>
     </form>
+    <script>
+    document.getElementById("OMC").addEventListener("click", function(event) {
+        event.preventDefault(); // Evita que el enlace recargue la página
+        alert("Si olvido su contraseña o necesita restablecerla comuniquese con el área de sistemas para que le indiquen como restablecer su contraseña tel: 3222501850 extensión: 1302");
+    });
+</script>
+
 </body>
 </html>

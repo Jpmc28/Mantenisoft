@@ -1,0 +1,109 @@
+html, body {
+    overflow: hidden; 
+    height: 100vh; 
+    margin: 0; 
+    background: url("img/Olvide\ mi\ contraseña\ \(1\).png");
+    display: flex;
+}
+#logo_personal{
+    width: 8%;
+}
+#seccion_video{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    background-color: #43778d;
+    width: 95vh;
+    height: 65vh;
+    border-radius: 36px;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+    margin-left: 15vh;
+    border: 0.3vh solid #d9d9d9;
+}
+.videoDeSoftware{
+    margin-top: 1%;
+    width: 85vh;
+    height: 50vh;
+    background: #339c9b;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+}
+video {
+    pointer-events: none;
+    border-radius: 40px; 
+    width: 1024px;
+    height: 744px;
+}
+#logo_clinica{
+    width: 30vh;
+}
+.Ingresar{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 50vh;
+    height: 65vh;
+    border-radius: 36px;
+    margin-top: 20vh;
+    margin-left: 10vh;
+    background-color:  #43778d;
+    border: 0.3vh solid #d9d9d9;
+}
+input{
+    background-color: #fbfefe;
+    border-radius: 40px;
+    border: none;
+    height: 6vh;
+    width: 40vh;
+    font-size: 3vh;
+}
+#email{
+    margin-top: 3vh;
+}
+#password{
+    margin-top: 2vh;
+}
+#email::-webkit-input-placeholder {
+    text-align: center;
+    color: #000000;
+}
+#password::-webkit-input-placeholder {
+    text-align: center;
+    color: #000000;
+}
+#ingresar{
+    font-size: 3vh;
+    background-color: #339c9b;
+    cursor: pointer;
+    width: 40vh;
+    height: 7vh;
+    border: none;
+    border-radius: 40px;
+    margin-top: 3vh;
+}
+a{
+    margin-top: 2vh;
+    text-decoration: wavy;
+    color: black;
+    font-size: 3vh;
+}
+#OMC{
+    margin-top: 3vh;
+}
+@media (max-width: 1920px) {
+    video{
+        width: 512px;
+        height: 372px;        
+    }
+    html, body {
+        background: url("img/Olvide\ mi\ contraseña\ \(2\).png");
+        background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+        background-position: center; /* Centra la imagen */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+    }
+}
