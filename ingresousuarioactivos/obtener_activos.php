@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
-    echo json_encode(["error" => "No autorizado"]);
-    exit();
+if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'activos' && $_SESSION['tipo_usuario'] != 'super_usuario')) {
+  header("Location: ../index.php");
+  exit();
 }
 
 // Configuración de la base de datos

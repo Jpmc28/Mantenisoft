@@ -37,6 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['correo'] = $user['correo'];
 
             switch ($user['tipo_usuario']) {
+                case 'super_usuario':
+                    header("Location: ../ingresosuperusuario/iniciosuperusuario.php");
+                    break;
                 case 'admin':
                     header("Location: ../ingresousuarioadmin/inicioadmin.php");
                     break;

@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['id_usuario'])) {
-    die("Acceso no autorizado.");
+if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'admin' && $_SESSION['tipo_usuario'] != 'super_usuario')) {
+  header("Location: ../../../../index.php");
+  exit();
 }
-
 $host = 'localhost';
 $user = 'root';
 $password = '';
