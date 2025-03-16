@@ -43,9 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         die("Error al registrar el cambio: " . $stmt->error);
     }
-}
     $stmt->close();
     $conn->close();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">

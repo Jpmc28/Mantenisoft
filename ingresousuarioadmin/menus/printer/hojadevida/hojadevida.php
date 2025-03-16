@@ -78,7 +78,7 @@ while ($fila = $resultado_mantenimientos->fetch_assoc()) {
 <body>
 <div class="contenedor">
     <div class="detalle-equipo">
-        <h2>Detalles del telefono</h2>
+        <h2>Detalles de la impresora</h2>
         <div class="contenido">
             <div class="info-equipo">
                 <h3><?php echo htmlspecialchars($equipo['nombre']); ?></h3>
