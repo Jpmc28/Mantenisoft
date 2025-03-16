@@ -27,9 +27,13 @@ if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'visualizad
             <a href="actualizardatos.php"><button id="boton_actualizar">Actualizar</button></a>
         </section>
         <section id="tablaServicios">
-            <section id="servicios"><p>Servicios Realizados</p></section>
-            <section id="serviciosRealizados">
-            </section>
+            <section id="servicios">Información</section>
+            <h1>Su usuario será el encargado de obtener reportes sobre:</h1>
+            <ul>
+                <li><i class="fas fa-phone-slash"></i> <h2>Daños a teléfonos como del cable de la fuente de alimentacion, cable de voz y bocina</h2></li>
+                <li><i class="fas fa-tools"></i> <h2>Mantenimientos de equipos de cómputo donde vera un reporte detallado de como fueron los mantenimientos y las areas por piso donde se han realizado todos los mantenimientos</h2></li>
+                <li><i class="fas fa-print"></i> <h2>Suministros de impresora consumidos como toner y drum de esta manera mostrando las areas por piso que consumen mas insumos</h2></li>
+            </ul>
         </section>
     </section>
     <div class="menu-container">
@@ -42,5 +46,6 @@ if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'visualizad
       <a href="menu/computers.php"><img src="img/computadores-removebg-preview.png" alt="Servicio 3" title="Servicio 3" id="foto3"></a>
     </div>
   </div>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>

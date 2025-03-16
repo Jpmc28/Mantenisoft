@@ -1,10 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
-    header("Location: ../../../../index.php");
-    exit();
+if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'activos' && $_SESSION['tipo_usuario'] != 'super_usuario')) {
+  header("Location: ../../../../../index.php");
+  exit();
 }
-
 // Conectar a la base de datos
 $host = 'localhost';
 $user = 'root';

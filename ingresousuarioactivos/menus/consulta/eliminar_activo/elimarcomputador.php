@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'activos') {
-    header("Location: ../../../../index.php");
-    exit();
+if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'activos' && $_SESSION['tipo_usuario'] != 'super_usuario')) {
+  header("Location: ../../../../../index.php");
+  exit();
 }
 
 // Conectar a la base de datos
@@ -28,7 +28,7 @@ $sql = "SELECT a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area,
                ars.area_especifica_nombre, per.placa, per.tipo
         FROM activos a
         JOIN areas ar ON a.id_area = ar.id_area
-        JOIN especificaciones es ON a.id_activo = es.id_activo
+        LEFT JOIN especificaciones es ON a.id_activo = es.id_activo
         LEFT JOIN areas_especificas ars ON a.id_areas_especificas = ars.id_area_especifica
         LEFT JOIN perifericos per ON a.id_activo = per.id_activo
         WHERE a.id_activo = ?";
