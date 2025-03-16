@@ -1,123 +1,208 @@
 <?php
-// Conectar a la base de datos
+session_start();
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: ../../index.php");
+    exit();
+}
+
 $host = 'localhost';
 $user = 'root';
 $password = '';
 $database = 'mantenisoft';
-
 $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_error) {
-    die("<p style='color: red;'>Error de conexión: " . $conn->connect_error . "</p>");
+    die("Error de conexión: " . $conn->connect_error);
 }
 
-// Definir fechas predeterminadas si no se envían por GET
-$fecha_inicio = isset($_GET['fecha_inicio']) ? $_GET['fecha_inicio'] : date('Y-m-01');
-$fecha_fin = isset($_GET['fecha_fin']) ? $_GET['fecha_fin'] : date('Y-m-d');
+// Obtener filtros de fecha
+$start_date = isset($_GET['start_date']) ? $_GET['start_date'] : date('Y-m-d');
+$end_date = isset($_GET['end_date']) ? $_GET['end_date'] : date('Y-m-d');
 
-// Verificar si la base de datos contiene los datos correctos antes de ejecutar las consultas
+// Filtro opcional por área
+$area = isset($_GET['area']) ? (int) $_GET['area'] : null;
 
-// Consultar cantidad de dispositivos registrados por fecha
-$sql_dispositivos = "SELECT DATE(fecha_ingreso) as fecha, COUNT(*) as cantidad 
-                     FROM activos 
-                     WHERE fecha_ingreso BETWEEN ? AND ? 
-                     GROUP BY fecha ORDER BY fecha DESC";
+// Consulta SQL
+$sql = "SELECT p.nombre_piso, COUNT(m.id_mantenimiento) as total 
+        FROM mantenimientos m
+        JOIN activos ac ON m.id_activo = ac.id_activo
+        JOIN areas a ON ac.id_area = a.id_area
+        JOIN pisos p ON a.id_piso = p.id_piso
+        WHERE m.fecha_mantenimiento BETWEEN ? AND ?";
 
-$stmt = $conn->prepare($sql_dispositivos);
-if ($stmt) {
-    $stmt->bind_param("ss", $fecha_inicio, $fecha_fin);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $dispositivos = $result->fetch_all(MYSQLI_ASSOC);
-    $stmt->close();
-} else {
-    die("Error en la consulta de dispositivos: " . $conn->error);
+$params = [$start_date, $end_date];
+$types = "ss";
+
+if ($area) {
+    $sql .= " AND a.id_area = ?";
+    $params[] = $area;
+    $types .= "i";
 }
+$sql .= " GROUP BY p.nombre_piso";
 
-// Consultar áreas con más mantenimientos
-$sql_areas = "SELECT ar.nombre_area, COUNT(m.id_mantenimiento) as total_mantenimientos 
-              FROM mantenimientos m 
-              JOIN activos a ON m.id_activo = a.id_activo
-              JOIN areas ar ON a.id_area = ar.id_area
-              WHERE m.fecha_mantenimiento BETWEEN ? AND ?
-              GROUP BY ar.nombre_area 
-              ORDER BY total_mantenimientos DESC 
-              LIMIT 5";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param($types, ...$params);
+$stmt->execute();
+$result = $stmt->get_result();
 
-$stmt = $conn->prepare($sql_areas);
-if ($stmt) {
-    $stmt->bind_param("ss", $fecha_inicio, $fecha_fin);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $areas = $result->fetch_all(MYSQLI_ASSOC);
-    $stmt->close();
-} else {
-    die("Error en la consulta de áreas: " . $conn->error);
+$data = [];
+while ($row = $result->fetch_assoc()) {
+    $data[] = $row;
 }
-
-// Consultar historial de mantenimientos por dispositivo
-$sql_historial = "SELECT m.id_activo, a.nombre, m.descripcion, DATE(m.fecha_mantenimiento) as fecha 
-                  FROM mantenimientos m 
-                  JOIN activos a ON m.id_activo = a.id_activo 
-                  WHERE m.fecha_mantenimiento BETWEEN ? AND ?
-                  ORDER BY m.fecha_mantenimiento DESC";
-
-$stmt = $conn->prepare($sql_historial);
-if ($stmt) {
-    $stmt->bind_param("ss", $fecha_inicio, $fecha_fin);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $historial = $result->fetch_all(MYSQLI_ASSOC);
-    $stmt->close();
-} else {
-    die("Error en la consulta del historial: " . $conn->error);
-}
-
-// Cerrar conexión
+$stmt->close();
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Reporte de Dispositivos</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Mantenimientos</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Reporte de Dispositivos</h1>
+    <h2>Reporte de Mantenimientos por Piso</h2>
     <form method="GET">
-        <label>Desde: <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>"></label>
-        <label>Hasta: <input type="date" name="fecha_fin" value="<?php echo $fecha_fin; ?>"></label>
-        <button type="submit">Consultar</button>
+        Fecha Inicio: <input type="date" name="start_date" value="<?= $start_date ?>" required>
+        Fecha Fin: <input type="date" name="end_date" value="<?= $end_date ?>" required>
+        <button type="submit">Filtrar</button>
     </form>
-
-    <h2>Dispositivos Registrados</h2>
-    <table border="1">
-        <tr><th>Fecha</th><th>Cantidad</th></tr>
-        <?php foreach ($dispositivos as $d) { ?>
-            <tr><td><?php echo htmlspecialchars($d['fecha']); ?></td><td><?php echo htmlspecialchars($d['cantidad']); ?></td></tr>
-        <?php } ?>
-    </table>
-
-    <h2>Áreas con más Mantenimientos</h2>
-    <table border="1">
-        <tr><th>Área</th><th>Total Mantenimientos</th></tr>
-        <?php foreach ($areas as $a) { ?>
-            <tr><td><?php echo htmlspecialchars($a['nombre_area']); ?></td><td><?php echo htmlspecialchars($a['total_mantenimientos']); ?></td></tr>
-        <?php } ?>
-    </table>
-
-    <h2>Historial de Mantenimientos</h2>
-    <table border="1">
-        <tr><th>ID Equipo</th><th>Nombre</th><th>Descripción</th><th>Fecha</th></tr>
-        <?php foreach ($historial as $h) { ?>
+    <canvas id="miGrafico"></canvas>
+    
+    <table>
+        <thead>
             <tr>
-                <td><?php echo htmlspecialchars($h['id_activo']); ?></td>
-                <td><?php echo htmlspecialchars($h['nombre']); ?></td>
-                <td><?php echo htmlspecialchars($h['descripcion']); ?></td>
-                <td><?php echo htmlspecialchars($h['fecha']); ?></td>
+                <th>Piso</th>
+                <th>Mantenimientos</th>
+                <th>Acciones</th>
             </tr>
-        <?php } ?>
+        </thead>
+        <tbody>
+            <?php foreach ($data as $row): ?>
+                <tr>
+                    <td><?= htmlspecialchars($row['nombre_piso']) ?></td>
+                    <td><?= htmlspecialchars($row['total']) ?></td>
+                    <td><button onclick="obtenerDetallesMantenimiento('<?= $row['nombre_piso'] ?>')">Ver Detalles</button></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
+    
+    <div id="detalleModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Detalles del Mantenimiento</h3>
+            <div id="detalleContenido"></div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById("miGrafico").getContext("2d");
+            const data = <?= json_encode($data) ?>;
+            const labels = data.map(item => item.nombre_piso);
+            const values = data.map(item => item.total);
+            
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Mantenimientos",
+                        data: values,
+                        backgroundColor: "rgba(54, 162, 235, 0.5)",
+                        borderColor: "rgba(54, 162, 235, 1)",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: { beginAtZero: true }
+                    },
+                    onClick: function (event, elements) {
+                        if (elements.length > 0) {
+                            let index = elements[0].index;
+                            let pisoSeleccionado = this.data.labels[index];
+                            obtenerDetallesMantenimiento(pisoSeleccionado);
+                        }
+                    }
+                }
+            });
+        });
+        
+        function obtenerDetallesMantenimiento(piso) {
+    fetch(`detalles.php?piso=${encodeURIComponent(piso)}`)
+        .then(response => response.json())
+        .then(data => {
+            let contenido = "";
+
+            if (data.error) {
+                contenido = `<p>${data.error}</p>`;
+            } else if (data.length === 0) {
+                contenido = "<p>No hay mantenimientos completados para este piso.</p>";
+            } else {
+                contenido = "<div class='modal-content-scroll'>";
+                data.forEach(mantenimiento => {
+                    contenido += `
+                        <div class="mantenimiento-item">
+                            <p><strong>Equipo:</strong> ${mantenimiento.NPlaca}</p>
+                            <p><strong>Fecha:</strong> ${mantenimiento.fecha_mantenimiento}</p>
+                            <p><strong>Técnico:</strong> ${mantenimiento.tecnico}</p>
+                            <p><strong>Responsable:</strong> ${mantenimiento.nombre_responsable} (${mantenimiento.cargo_responsable})</p>
+                            <p><strong>Tareas Realizadas:</strong></p>
+                            <ul>
+                    `;
+
+                    // Mostrar tareas completadas en Software
+                    if (mantenimiento.descripcion.software.length > 0) {
+                        contenido += `<li><strong>Software:</strong></li>`;
+                        mantenimiento.descripcion.software.forEach(tarea => {
+                            contenido += `<li>- ${tarea.replace(/_/g, " ")}</li>`;
+                        });
+                    }
+
+                    // Mostrar tareas completadas en Hardware
+                    if (mantenimiento.descripcion.hardware.length > 0) {
+                        contenido += `<li><strong>Hardware:</strong></li>`;
+                        mantenimiento.descripcion.hardware.forEach(tarea => {
+                            contenido += `<li>- ${tarea.replace(/_/g, " ")}</li>`;
+                        });
+                    }
+
+                    contenido += `
+                            </ul>
+                            <p><strong>Firma Responsable Del Activo:</strong></p>
+                            <img src="${mantenimiento.firma_tecnico}" alt="Firma del técnico" class="firma-img">
+                            <hr>
+                        </div>
+                    `;
+                });
+                contenido += "</div>";
+            }
+
+            document.getElementById("detalleContenido").innerHTML = contenido;
+            document.getElementById("detalleModal").style.display = "flex";
+        })
+        .catch(error => {
+            console.error("Error en fetch:", error);
+            document.getElementById("detalleContenido").innerHTML = `<p>Error al obtener los datos</p>`;
+        });
+}
+
+// Cerrar modal al hacer clic en la "X"
+document.querySelector(".close").addEventListener("click", function () {
+    document.getElementById("detalleModal").style.display = "none";
+});
+
+document.querySelector(".close").addEventListener("click", function () {
+    document.getElementById("detalleModal").style.display = "none";
+});
+
+        
+        document.querySelector(".close").addEventListener("click", function () {
+            document.getElementById("detalleModal").style.display = "none";
+        });
+    </script>
 </body>
 </html>

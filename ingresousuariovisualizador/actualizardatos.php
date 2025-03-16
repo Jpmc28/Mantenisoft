@@ -6,6 +6,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'visualizado
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +34,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'visualizado
     </div>
     <div id="botones">
     <button type="submit" id="guardar"><h3>Guardar</h3></button></form>
-    <a href="inicioadmin.php">
+    <a href="iniciovisualizador.php">
     <button id="cancelar"><h3>cancelar</h3></button>
     </a>
     </div>
