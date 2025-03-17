@@ -46,6 +46,5 @@ if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'visualizad
       <a href="menu/computers.php"><img src="img/computadores-removebg-preview.png" alt="Servicio 3" title="Servicio 3" id="foto3"></a>
     </div>
   </div>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,58 +1,36 @@
-/* Estilos generales */
 html, body {
-  overflow: hidden;
-  height: 100vh;
-  margin: 0;
-  background: url("../img/Olvide\ mi\ contraseña\ (1).png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  overflow: hidden; 
+  height: 100vh; 
+  margin: 0; 
+  background: url("img/Olvide mi contraseña (1).png");
+  background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  display: flex-end;
   font-weight: bold;
+  font-style: unset;
 }
-
-/* Logo */
-#logocli {
-  position: absolute;
-  top: 2vh;
-  left: 2vh;
-  width: 12vh;
-}
-
-/* Contenedor principal */
-#personalydatots {
+#personalydatots{
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 80vh;
-}
-
-/* Estilos de la tabla de información personal */
-#tablaPeronal {
+  }    
+#tablaPeronal{
   background: #1c4a60;
-  padding: 3vh;
-  border-radius: 20px;
-  text-align: center;
-  width: 35vh;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease-in-out;
-}
-
-#tablaPeronal:hover {
-  transform: translateY(-5px);
-}
-
-#cabeza {
-  width: 10vh;
-  margin-bottom: 1vh;
-}
-
-h3 {
-  color: white;
+  height: 50vh;
+  width: 40vh;
+  margin-top: 5vh;
+  margin-left: 25vh;
+  border-radius: 50px;
   font-size: 2vh;
+  padding: 3vh;
+  align-items: center;
+  align-content: center;
+  font-weight: 700;
+  text-align: center;
 }
-
-/* Botón de actualizar */
-#boton_actualizar {
+h3{
+color: white;
+}
+#boton_actualizar{
   height: 6vh;
   width: 20vh;
   border-radius: 50px;
@@ -61,81 +39,95 @@ h3 {
   font-size: 2.5vh;
   border: none;
   background-color: #fbfefe;
-  transition: background-color 0.3s, transform 0.2s;
 }
-
-#boton_actualizar:hover {
-  background-color: #FFD700;
-  transform: scale(1.05);
+#cabeza{
+width: 15vh;
 }
-
-/* Tabla de Servicios */
+#foto1{
+width: 10vh;
+height: 10vh;
+transition: 0.3s ease-in-out;
+}
+#foto1:hover{
+transform: translateY(-10px);
+}
+#foto2{
+width: 10vh;
+height: 10vh;
+transition: 0.3s ease-in-out;
+}
+#foto2:hover{
+transform: translateY(-10px);
+}
+#foto3{
+width: 11vh;
+height: 9vh;
+transition: 0.3s ease-in-out;
+}
+#foto3:hover{
+transform: translateY(-10px);
+}
+#foto4{
+width: 10vh;
+height: 10vh;
+transition: 0.3s ease-in-out;
+}
+#foto4:hover{
+transform: translateY(-10px);
+}
+#boton_actualizar, a{
+  text-decoration: none;
+  color: black;         
+  outline: none; 
+  font-weight: 700;
+}
 #tablaServicios {
-  background: #1E3A47;
-  color: white;
-  padding: 25px;
-  border-radius: 20px;
-  text-align: center;
-  width: 40vh;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  background-color:  #1c4a60;
+  margin-left: 10vh;
+  margin-top: 5vh;
+  border-radius: 50px;
+  width: 90vh;
+  height: auto; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 2vh; 
 }
-
 #servicios {
-  font-size: 2.5vh;
-  font-weight: bold;
-  padding: 12px;
-  background-color: white;
-  color: black;
-  border-radius: 20px;
-  display: inline-block;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-#servicios:hover {
-  background-color: #FFD700;
-  transform: scale(1.05);
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-ul li {
-  font-size: 2vh;
-  margin: 12px 0;
+  margin-top: 3vh;
+  background-color: #fbfefe;
+  border-radius: 50px;
+  width: 50vh;
+  height: 7vh;
+  font-size: 5vh;
   display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
+#serviciosRealizados {
+  background-color: #1c4a60;
+  height: 30vh;
+  width: 90vh;
+  margin-top: 3vh;
+  padding-top: 9vh;
+  border-radius: 25px;
+  display: flex; 
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 8px;
-  border-radius: 10px;
-  transition: background 0.3s;
+}
+#logocli{
+width: 30vh;
+margin-left: 2vh;
 }
 
-ul li:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-ul li i {
-  font-size: 24px;
-  color: #FFD700;
-  transition: transform 0.3s;
-}
-
-ul li:hover i {
-  transform: scale(1.2);
-}
-
-/* Menú desplegable */
 .menu-container {
+  margin-top: 5vh;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5vh;
 }
-
 .menu-icon {
   width: 10vh;
   height: 10vh;
@@ -146,18 +138,18 @@ ul li:hover i {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: opacity 0.3s;
 }
-
 .menu-icon img {
   width: 10vh;
   height: 10vh;
-  transition: transform 0.3s;
+  transition: 0.3s ease-in-out;
 }
-
-.menu-icon img:hover {
+.menu-icon img:hover{
   transform: translateY(-10px);
 }
 
+/* Menú desplegable */
 .dropdown-menu {
   position: absolute;
   display: flex;
@@ -173,44 +165,35 @@ ul li:hover i {
   height: 10vh;
   opacity: 0;
   visibility: hidden;
-  transition: all 1.0s ease-in-out;
+  transition: all 1.0s ease-in-out; 
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .dropdown-menu img {
+  margin: 2vh;
   width: 10vh;
   height: 10vh;
   border-radius: 2vh;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .menu-container:hover .menu-icon {
   opacity: 0;
   visibility: hidden;
 }
-
 .menu-container:hover .dropdown-menu {
+  width: 60vh; 
   opacity: 1;
   visibility: visible;
 }
-
-/* Responsivo */
-@media (max-width: 768px) {
-  #personalydatots {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  #tablaPeronal, #tablaServicios {
-      width: 90%;
-  }
-
-  #servicios {
-      font-size: 20px;
-  }
-
-  ul li {
-      font-size: 18px;
+@media (max-width: 1920px) {
+  html, body {
+      background: url("img/Olvide\ mi\ contraseña\ \(2\).png");
+      background-size: cover; /* Hace que la imagen cubra toda la pantalla */
+      background-position: center; /* Centra la imagen */
+      background-repeat: no-repeat; /* Evita que la imagen se repita */
   }
 }
