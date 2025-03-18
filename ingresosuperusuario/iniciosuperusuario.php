@@ -4,6 +4,7 @@ if (!isset($_SESSION['id_usuario']) || $_SESSION['tipo_usuario'] != 'super_usuar
     header("Location: ../index.php");
     exit();
 }
+
 // Conexión a la base de datos
 $host = 'localhost'; 
 $user = 'root';      
@@ -23,7 +24,7 @@ if (isset($_POST['agregar_usuario'])) {
     $rol = $_POST['rol'];
     $tipo_usuario = $_POST['tipo_usuario'];
     
-    $conn->query("INSERT INTO usuarios (nombre, correo, cedula, rol, tipo_usuario) VALUES ('$nombre', '$correo', '$cedula', '$rol', '$tipo_usuario')");
+    $conn->query("INSERT INTO usuarios (nombre, correo, cedula, rol, tipo_usuario, estado) VALUES ('$nombre', '$correo', '$cedula', '$rol', '$tipo_usuario', 'activo')");
     header("Location: iniciosuperusuario.php");
 }
 
@@ -36,13 +37,21 @@ if (isset($_GET['reset_password'])) {
     header("Location: iniciosuperusuario.php");
 }
 
-// Eliminar usuario
-if (isset($_GET['eliminar_usuario'])) {
-    $id = $_GET['eliminar_usuario'];
-    $conn->query("DELETE FROM usuarios WHERE id_usuario = $id");
+// Cambiar estado del usuario (activar/inactivar)
+if (isset($_GET['cambiar_estado']) && isset($_GET['nuevo_estado'])) {
+    $id_usuario = $_GET['cambiar_estado'];
+    $nuevo_estado = $_GET['nuevo_estado'];
     
-    $conn->query("INSERT INTO historial (id_usuario, accion) VALUES ($id, 'Eliminación de usuario')");
+    // Actualizar estado en la base de datos
+    $conn->query("UPDATE usuarios SET estado = '$nuevo_estado' WHERE id_usuario = $id_usuario");
+    
+    // Registrar en historial
+    $accion = ($nuevo_estado == 'activo') ? 'usuario activado' : 'usuario inactivo';
+    $conn->query("INSERT INTO historial (id_usuario, accion) VALUES ($id_usuario, '$accion')");
+    
+    // Redirigir para evitar recargas accidentales
     header("Location: iniciosuperusuario.php");
+    exit();
 }
 
 // Cambiar tipo de usuario
@@ -64,7 +73,6 @@ if (isset($_POST['cambiar_tipo_usuario'])) {
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <img src="img/GtuzsKu2ryrS5m0Z-removebg-preview.png" alt="clinica" id="img">
     <div class="container mt-4">
         <h2>Gestión de Usuarios</h2>
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAgregar">Agregar Usuario</button>
@@ -93,7 +101,11 @@ if (isset($_POST['cambiar_tipo_usuario'])) {
                     </td>
                     <td>
                         <a href="?reset_password=<?= $row['id_usuario'] ?>" class="btn btn-warning">Restablecer Contraseña</a>
-                        <a href="?eliminar_usuario=<?= $row['id_usuario'] ?>" class="btn btn-danger">Eliminar</a>
+                        <?php if ($row['estado'] == 'activo') { ?>
+                            <a href="?cambiar_estado=<?= $row['id_usuario'] ?>&nuevo_estado=inactivo" class="btn btn-danger">Inactivar</a>
+                        <?php } else { ?>
+                            <a href="?cambiar_estado=<?= $row['id_usuario'] ?>&nuevo_estado=activo" class="btn btn-success">Activar</a>
+                        <?php } ?>
                     </td>
                 </tr>
             <?php } ?>
@@ -126,14 +138,12 @@ if (isset($_POST['cambiar_tipo_usuario'])) {
             </div>
         </div>
     </div>
-
-    <!-- Sección de Desplazamiento por app -->
-<div class="container mt-4">
-    <h2>Desplazamiento por app</h2>
-    <a href="../ingresousuariovisualizador/iniciovisualizador.php" class="btn btn-primary">Visualizar</a>
-    <a href="../ingresousuarioadmin/inicioadmin.php" class="btn btn-primary">Sistemas</a>
-    <a href="../ingresousuarioactivos/inicioactivos.php" class="btn btn-primary">Activos</a>
-</div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Sección de Desplazamiento por app -->
+    <div class="container mt-4">
+        <h2>Desplazamiento por app</h2>
+        <a href="../ingresousuariovisualizador/iniciovisualizador.php" class="btn btn-primary">Visualizar</a>
+        <a href="../ingresousuarioadmin/inicioadmin.php" class="btn btn-primary">Sistemas</a>
+        <a href="../ingresousuarioactivos/inicioactivos.php" class="btn btn-primary">Activos</a>
+    </div>
 </body>
 </html>
