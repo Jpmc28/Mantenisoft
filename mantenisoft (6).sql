@@ -312,18 +312,19 @@ CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `correo` varchar(100) NOT NULL,
-  `contraseña` varchar(255) NOT NULL,
+  `contraseña` varchar(255) NULL,
   `Cedula` int(11) NOT NULL,
   `Rol` varchar(100) NOT NULL,
-  `tipo_usuario` enum('admin','activos','visualizador','super_usuario') NOT NULL
+  `tipo_usuario` enum('admin','activos','visualizador','super_usuario') NOT NULL,
+  `estado` enum('activo','inactivo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombre`, `correo`, `contraseña`, `Cedula`, `Rol`, `tipo_usuario`) VALUES
-(101, 'David Eduardo Salazar Romero', 'david.salazar@clinicanuevaellago.com', 'S0P0RT3', 123456789, 'Supervidor de sistemas', 'super_usuario');
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `correo`, `Cedula`, `Rol`, `tipo_usuario`) VALUES
+(101, 'David Eduardo Salazar Romero', 'david.salazar@clinicanuevaellago.com', 123456789, 'Supervidor de sistemas', 'super_usuario');
 
 --
 -- Índices para tablas volcadas
@@ -539,6 +540,7 @@ ALTER TABLE `mantenimientos_telefonos`
 --
 ALTER TABLE `perifericos`
   ADD CONSTRAINT `perifericos_ibfk_1` FOREIGN KEY (`id_activo`) REFERENCES `activos` (`id_activo`) ON DELETE CASCADE;
+
 
 DELIMITER $$
 --
