@@ -144,25 +144,61 @@ $conn->close();
 
 <script>
     const canvas = document.getElementById('firmaCanvas');
-    const ctx = canvas.getContext('2d');
     const firmaInput = document.getElementById('firmaInput');
     const limpiarFirma = document.getElementById('limpiarFirma');
 
     canvas.width = 400;
     canvas.height = 200;
+
+    const ctx = canvas.getContext('2d');
     let dibujando = false;
 
-    canvas.addEventListener('mousedown', e => { dibujando = true; ctx.moveTo(e.offsetX, e.offsetY); });
-    canvas.addEventListener('mousemove', e => { if (dibujando) { ctx.lineTo(e.offsetX, e.offsetY); ctx.stroke(); } });
-    canvas.addEventListener('mouseup', () => { dibujando = false; firmaInput.value = canvas.toDataURL(); });
-    limpiarFirma.addEventListener('click', () => { ctx.clearRect(0, 0, canvas.width, canvas.height); firmaInput.value = ''; });
-       // Manejo del estado de mantenimiento
-       document.getElementById('dejarEnProceso').addEventListener('click', function () {
-        document.getElementById('estado_mantenimiento').value = 'En Proceso';
+    canvas.addEventListener('mousedown', (e) => {
+    dibujando = true;
+    dibujar(e); // Para marcar el inicio
     });
 
-    document.getElementById('guardarMantenimiento').addEventListener('click', function () {
-        document.getElementById('estado_mantenimiento').value = 'Completado';
+    canvas.addEventListener('mouseup', () => {
+    dibujando = false;
+    ctx.beginPath();
+    // Guardar la firma como Data URL cuando se suelta el mouse
+    firmaInput.value = canvas.toDataURL(); // Guardar la firma en el input
+    });
+
+    canvas.addEventListener('mousemove', (e) => {
+    if (dibujando) {
+        dibujar(e);
+    }
+    });
+
+    function dibujar(e) {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = 'black';
+
+    ctx.lineTo(x, y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    }
+
+    // Botón para limpiar la firma
+    limpiarFirma.addEventListener('click', function() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    firmaInput.value = ''; // Limpiar el input de la firma
+    });
+
+    // Aquí tus otros botones de guardar mantenimiento y dejar en proceso:
+    document.getElementById('guardarMantenimiento').addEventListener('click', function() {
+    document.getElementById('estado_mantenimiento').value = 'Completado';
+    });
+
+    document.getElementById('dejarEnProceso').addEventListener('click', function() {
+    document.getElementById('estado_mantenimiento').value = 'En proceso';
     });
 </script>
 

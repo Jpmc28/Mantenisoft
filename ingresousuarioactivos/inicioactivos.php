@@ -12,7 +12,6 @@ if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'activos' &
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estiloInicio.css">
-    <link rel="website icon" href="img/GtuzsKu2ryrS5m0Z-removebg-preview1.png">
     <script>
       document.addEventListener("DOMContentLoaded", function () {
           fetch("obtener_activos.php")
@@ -33,7 +32,7 @@ if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'activos' &
               .catch(error => console.error("Error al obtener los activos:", error));
       });
       </script>
-    <title>InicioAdmin</title>
+    <title>InicioActivos</title>
 </head>
 <body>
   <img src="img/GtuzsKu2ryrS5m0Z-removebg-preview.png" alt="" id="logocli">

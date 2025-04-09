@@ -145,5 +145,6 @@ if (isset($_POST['cambiar_tipo_usuario'])) {
         <a href="../ingresousuarioadmin/inicioadmin.php" class="btn btn-primary">Sistemas</a>
         <a href="../ingresousuarioactivos/inicioactivos.php" class="btn btn-primary">Activos</a>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

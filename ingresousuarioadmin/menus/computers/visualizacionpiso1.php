@@ -65,6 +65,7 @@ $resultado = $stmt->get_result();
 if ($resultado->num_rows > 0) {
     echo "<div class='contenedor'>";
     echo "<h1>¿Qué equipo quieres ver?</h1>";
+    echo "<input type='text' id='buscador' placeholder='Buscar producto...'>";//buscador
     echo "<div class='activos'>"; // Contenedor con Grid
     
     while ($fila = $resultado->fetch_assoc()) {
@@ -98,9 +99,33 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/visualizacionp1.css">
     <link rel="website icon" href="img/GtuzsKu2ryrS5m0Z-removebg-preview1.png">
-    <title>mantenisoft</title>
+    <title>Uztech</title>
 </head>
 <body>
+<style>
+        .resaltado{
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+    <!--filtro-->
+    <script>
+        const buscador = document.getElementById('buscador');
+
+        buscador.addEventListener('keyup', function() {
+            const filtro = buscador.value.toLowerCase();
+            const activo = document.querySelectorAll('.activo');
+
+            activo.forEach(function(activo) {
+                const texto = activo.textContent.toLowerCase();
+                if (filtro !== "" && texto.includes(filtro)) {
+                    activo.classList.add('resaltado');
+                } else {
+                    activo.classList.remove('resaltado');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 

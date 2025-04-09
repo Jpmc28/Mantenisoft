@@ -11,7 +11,6 @@ if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'activos' &
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilostelefonos.css">
-    <link rel="website icon" href="img/GtuzsKu2ryrS5m0Z-removebg-preview1.png">
     <title>Mantenisoft</title>
 </head>
 <body>
@@ -22,7 +21,7 @@ if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'activos' &
             <div>
                 <a href="computers/visualizacionpiso1.php?piso=S2"><div class="piso"><h1>S2</h1></div></a>
                 <a href="computers/visualizacionpiso1.php?piso=30"><div class="piso"><h1>Piso 3</h1></div></a>
-                <a href="computers/visualizacionpiso1.php?piso=7"><div class="piso"><h1>Piso 7</h1></div></a>
+                <a href="computers/visualizacionpiso1.php?piso=70"><div class="piso"><h1>Piso 7</h1></div></a>
             </div>
             <div>
                 <a href="computers/visualizacionpiso1.php?piso=S1"><div class="piso"><h1>S1</h1></div></a>

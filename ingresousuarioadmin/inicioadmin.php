@@ -26,7 +26,7 @@ $id_usuario = $_SESSION['id_usuario'];
 $sql_mantenimientos = "SELECT m.id_mantenimiento, m.fecha_mantenimiento, u.nombre AS nombre_usuario, m.estado, esp.nombre_dominio
                         FROM mantenimientos m
                         JOIN usuarios u ON m.id_usuario = u.id_usuario
-                        JOIN especificaciones esp ON m.id_activo = esp.id_activo
+                        LEFT JOIN especificaciones esp ON m.id_activo = esp.id_activo
                         WHERE m.id_usuario = ?
                         ORDER BY m.fecha_mantenimiento DESC;";
 
@@ -50,7 +50,6 @@ while ($fila = $resultado_mantenimientos->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estiloInicio.css">
-    <link rel="website icon" href="img/GtuzsKu2ryrS5m0Z-removebg-preview1.png">
     <title>InicioAdmin</title>
 </head>
 <body>
@@ -75,8 +74,8 @@ while ($fila = $resultado_mantenimientos->fetch_assoc()) {
                                 <span class="usuario"><?php echo htmlspecialchars($mantenimiento['nombre_dominio']); ?></span>
                                 <span class="estado">(<?php echo htmlspecialchars($mantenimiento['estado']); ?>)</span>
                                 
-                                <?php if ($mantenimiento['estado'] === 'En Proceso'): ?>
-                                    <form action="retomar_mantenimiento.php" method="GET" class="retomar-form">
+                                <?php if ($mantenimiento['estado'] === 'En proceso'): ?>
+                                    <form action="menus/computers/hojadevida/retomar_mantenimiento.php" method="GET" class="retomar-form">
                                         <input type="hidden" name="id_mantenimiento" value="<?php echo $mantenimiento['id_mantenimiento']; ?>">
                                         <button type="submit" class="retomar-btn">Retomar</button>
                                     </form>
@@ -95,9 +94,9 @@ while ($fila = $resultado_mantenimientos->fetch_assoc()) {
       <img src="img/imagen_principal-removebg-preview.png" alt="Menú">
     </div>
     <div class="dropdown-menu">
-      <a href="menus/telefono.php"><img src="img/telefono-removebg-preview.png" alt="Servicio 1" title="Servicio 1" id="foto1"></a>
-      <a href="menus/printer.php"><img src="img/impresora-removebg-preview.png" alt="Servicio 2" title="Servicio 2" id="foto2"></a>
-      <a href="menus/computers.php"><img src="img/computadores-removebg-preview.png" alt="Servicio 3" title="Servicio 3" id="foto3"></a>
+      <a href="menus/telefono.php"><img src="img/telefono-removebg-preview.png" alt="Servicio 1" title="telefonos" id="foto1"></a>
+      <a href="menus/printer.php"><img src="img/impresora-removebg-preview.png" alt="Servicio 2" title="impresoras" id="foto2"></a>
+      <a href="menus/computers.php"><img src="img/computadores-removebg-preview.png" alt="Servicio 3" title="computadores" id="foto3"></a>
     </div>
   </div>
 </body>

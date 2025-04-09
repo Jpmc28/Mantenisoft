@@ -28,7 +28,7 @@ if (!isset($_SESSION['id_usuario']) || ($_SESSION['tipo_usuario'] != 'visualizad
         </section>
         <section id="tablaServicios">
             <section id="servicios">Información</section>
-            <h1>Su usuario será el encargado de obtener reportes sobre:</h1>
+            <h1 class="Titulo">Su usuario será el encargado de obtener reportes sobre:</h1>
             <ul>
                 <li><i class="fas fa-phone-slash"></i> <h2>Daños a teléfonos como del cable de la fuente de alimentacion, cable de voz y bocina</h2></li>
                 <li><i class="fas fa-tools"></i> <h2>Mantenimientos de equipos de cómputo donde vera un reporte detallado de como fueron los mantenimientos y las areas por piso donde se han realizado todos los mantenimientos</h2></li>

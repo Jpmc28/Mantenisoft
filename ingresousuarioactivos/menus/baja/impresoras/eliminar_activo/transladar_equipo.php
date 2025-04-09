@@ -44,7 +44,6 @@ if (!$activo) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/ingresardatos.css">
-    <link rel="website icon" href="img/GtuzsKu2ryrS5m0Z-removebg-preview1.png">
     <title>Mantenisoft - Actualizar Área del Activo</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>

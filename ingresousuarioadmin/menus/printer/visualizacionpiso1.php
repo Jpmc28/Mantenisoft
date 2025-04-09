@@ -45,12 +45,13 @@ if (!$piso_id) {
 }
 
 // Preparar la consulta
-$sql = "SELECT a.id_activo, a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area, es.nombre_dominio
+$sql = "SELECT a.id_activo, a.nombre, a.tipo, a.estado, a.NPlaca, ar.nombre_area, es.nombre_dominio, COALESCE(ars.area_especifica_nombre, ar.nombre_area) AS identificador 
         FROM activos a
+        LEFT JOIN areas_especificas ars ON a.id_areas_especificas = ars.id_area_especifica
         JOIN areas ar ON a.id_area = ar.id_area
         JOIN pisos p ON ar.id_piso = p.id_piso
         LEFT JOIN especificaciones es ON a.id_activo = es.id_activo
-        WHERE p.id_piso = ? and a.tipo = 'impresora';";
+        WHERE (p.id_piso = ? and a.tipo = 'impresora');";
 
 $stmt = $conn->prepare($sql);
 if (!$stmt) {
@@ -64,10 +65,13 @@ $resultado = $stmt->get_result();
 if ($resultado->num_rows > 0) {
     echo "<div class='contenedor'>";
     echo "<h1>¿Qué equipo quieres ver?</h1>";
+    echo "<input type='text' id='buscador' placeholder='Buscar producto...'>";//buscador
     echo "<div class='activos'>"; // Contenedor con Grid
     
     while ($fila = $resultado->fetch_assoc()) {
-        echo "<a href='hojadevida/hojadevida.php?id_activo=" . $fila['id_activo'] . "'><div class='activo'>" . $fila['NPlaca'] . "</div></a>";
+        echo "<a href='hojadevida/hojadevida.php?id_activo=" . $fila['id_activo'] . "'>
+                <div class='activo'>" . htmlspecialchars($fila['identificador']) . "</div>
+              </a>";
     }
     
     echo "</div>"; // Cierre de .activos
@@ -82,7 +86,6 @@ if ($resultado->num_rows > 0) {
     echo "</div>";
 }
 
-// Cerrar conexión
 $stmt->close();
 $conn->close();
 
@@ -97,6 +100,30 @@ $conn->close();
     <title>mantenisoft</title>
 </head>
 <body>
+    <style>
+        .resaltado{
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+    <!--filtro-->
+    <script>
+        const buscador = document.getElementById('buscador');
+
+        buscador.addEventListener('keyup', function() {
+            const filtro = buscador.value.toLowerCase();
+            const activo = document.querySelectorAll('.activo');
+
+            activo.forEach(function(activo) {
+                const texto = activo.textContent.toLowerCase();
+                if (filtro !== "" && texto.includes(filtro)) {
+                    activo.classList.add('resaltado');
+                } else {
+                    activo.classList.remove('resaltado');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 

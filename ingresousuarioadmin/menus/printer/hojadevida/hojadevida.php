@@ -87,6 +87,7 @@ while ($fila = $resultado_mantenimientos->fetch_assoc()) {
                 <p><strong>Número de Placa:</strong> <?php echo htmlspecialchars($equipo['NPlaca']); ?></p>
                 <p><strong>Área:</strong> <?php echo htmlspecialchars($equipo['nombre_area']); ?></p>
                 <p><strong>Área Específica:</strong> <?php echo htmlspecialchars($equipo['area_especifica_nombre']); ?></p>
+                <p><strong>Numero de placa:</strong> <?php echo htmlspecialchars($equipo['area_especifica_nombre']); ?></p>
             </div>
             
             <!-- Imagen del equipo -->

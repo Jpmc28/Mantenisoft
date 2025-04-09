@@ -94,8 +94,6 @@ input[type="text"] {
 #firmaCanvas {
     background: white;
     border: 0.2vh solid #ccc;
-    width: 100%;
-    height: 12vh;
     margin-top: 1vh;
     border-radius: 1vh;
 }
@@ -122,12 +120,12 @@ button {
     background: #218838;
 }
 
-#dejarEnProceso {
+#cerrarMantenimiento {
     background: #ffc107;
     color: black;
 }
 
-#dejarEnProceso:hover {
+#cerrarMantenimiento:hover {
     background: #e0a800;
 }
 
@@ -137,6 +135,9 @@ button {
 
 #limpiarFirma:hover {
     background: #b52b37;
+}
+#dejarEnProceso{
+    background: #ffc107;
 }
 
 /* Ajustes para retomar mantenimiento */
